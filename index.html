@@ -44,10 +44,11 @@
         <!-- Sello interactivo usando tu SVG Boho Místico -->
         <div id="boton-abrir" class="cursor-pointer flex flex-col items-center transform transition hover:scale-110">
             
-            <!-- Acá llamamos a tu SVG con la máscara -->
-            <div class="w-40 h-40 mb-6 svg-plateado drop-shadow-[0_0_20px_rgba(255,255,255,0.4)]" 
-                 style="-webkit-mask-image: url('45008982_9123934.svg'); mask-image: url('45008982_9123934.svg');">
-            </div>
+            <!-- Llamamos al SVG como imagen y lo volvemos blanco con filtros -->
+<img src="./45008982_9123934.svg" 
+     alt="Sello lunar" 
+     class="w-40 h-40 mb-6 brightness-0 invert drop-shadow-[0_0_15px_rgba(255,255,255,0.8)]">
+
             
             <p class="text-slate-300 tracking-[0.2em] text-sm animate-pulse">PRESIONÁ PARA ABRIR</p>
         </div>
