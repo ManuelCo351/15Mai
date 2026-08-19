@@ -1,52 +1,116 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mis 15 - Alma</title>
-  <!-- Script de Tailwind para prototipar rápido -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <!-- Fuente cursiva elegante de Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
-  
-  <style>
-    .fuente-titulo { font-family: 'Great Vibes', cursive; }
-  </style>
-</head>
-<body class="bg-[#0B1021]">
-
-  <!-- Contenedor Principal (Cielo nocturno) -->
-  <main class="min-h-screen bg-gradient-to-b from-[#0B1021] via-[#1B2745] to-[#0B1021] flex flex-col items-center justify-center relative overflow-hidden px-4">
-
-    <!-- Ejemplo de cómo ubicar estrellitas de fondo animadas -->
-    <div class="absolute top-16 left-12 w-8 h-8 text-white/60 animate-pulse">
-      <!-- Acá pegás el código <svg> de una estrellita boho -->
-    </div>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mis 15 - Alma | Temática Lunar</title>
     
-    <div class="absolute bottom-32 right-10 w-12 h-12 text-slate-300 animate-pulse delay-700">
-      <!-- Acá pegás otro <svg> de estrella -->
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Fuentes: Great Vibes (Elegante para títulos) y Montserrat (Limpia para textos) -->
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <style>
+        .fuente-titulo { font-family: 'Great Vibes', cursive; }
+        .fuente-texto { font-family: 'Montserrat', sans-serif; }
+        
+        /* Animación suave para desvanecer la pantalla inicial */
+        .fade-out { 
+            opacity: 0; 
+            pointer-events: none; 
+            transition: opacity 0.8s ease-in-out; 
+        }
+        
+        /* Clase mágica: Convierte tu archivo SVG externo en un elemento plateado manipulable */
+        .svg-plateado {
+            background-color: #E2E8F0; /* Slate-200 de Tailwind (Plateado) */
+            -webkit-mask-size: contain;
+            -webkit-mask-repeat: no-repeat;
+            -webkit-mask-position: center;
+            mask-size: contain;
+            mask-repeat: no-repeat;
+            mask-position: center;
+        }
+    </style>
+</head>
+<body class="bg-blue-950 fuente-texto overflow-hidden" id="body">
+
+    <!-- ==========================================
+         1. PANTALLA DE INICIO (El "Sobre" interactivo)
+         ========================================== -->
+    <div id="pantalla-sobre" class="fixed inset-0 z-50 flex flex-col items-center justify-center bg-blue-950 transition-all duration-1000">
+        
+        <!-- Sello interactivo usando tu SVG Boho Místico -->
+        <div id="boton-abrir" class="cursor-pointer flex flex-col items-center transform transition hover:scale-110">
+            
+            <!-- Acá llamamos a tu SVG con la máscara -->
+            <div class="w-40 h-40 mb-6 svg-plateado drop-shadow-[0_0_20px_rgba(255,255,255,0.4)]" 
+                 style="-webkit-mask-image: url('45008982_9123934.svg'); mask-image: url('45008982_9123934.svg');">
+            </div>
+            
+            <p class="text-slate-300 tracking-[0.2em] text-sm animate-pulse">PRESIONÁ PARA ABRIR</p>
+        </div>
     </div>
 
-    <!-- Contenedor de la Luna Principal Mística -->
-    <!-- El drop-shadow crea el efecto de que la luna brilla en la oscuridad -->
-    <div class="w-48 h-48 mb-6 text-slate-200 drop-shadow-[0_0_15px_rgba(255,255,255,0.3)]">
-        <!-- IMPORTANTE: Cuando pegues tu SVG de la luna acá, asegurate de que las etiquetas <path> 
-             adentro del SVG tengan el atributo fill="currentColor". 
-             Así toman automáticamente el color "text-slate-200" que le dimos arriba. -->
-        <svg viewBox="0 0 24 24" fill="currentColor">
-           <!-- Código interno del SVG de Freepik/SVG Repo -->
-        </svg>
-    </div>
+    <!-- ==========================================
+         2. CONTENIDO PRINCIPAL (La Invitación)
+         ========================================== -->
+    <main id="contenido-principal" class="h-screen overflow-y-auto bg-gradient-to-b from-blue-950 via-[#16213e] to-blue-950 hidden opacity-0 transition-opacity duration-1000">
+        
+        <!-- Sección Hero (Nombre y música) -->
+        <section class="min-h-screen flex flex-col items-center justify-center relative px-4 text-center">
+            
+            <h1 class="fuente-titulo text-7xl md:text-8xl text-white drop-shadow-lg mb-2">
+                Alma
+            </h1>
+            <p class="text-slate-300 tracking-[0.3em] uppercase text-sm mb-12">
+                Mis Quince Años
+            </p>
+            
+            <!-- Reproductor de Audio -->
+            <audio id="musica-fondo" loop>
+                <!-- Cuando tengas el mp3, descomentá esta línea y poné la ruta -->
+                <!-- <source src="tu-cancion.mp3" type="audio/mpeg"> -->
+            </audio>
 
-    <!-- Textos Principales -->
-    <h1 class="fuente-titulo text-6xl md:text-7xl text-white font-normal text-center drop-shadow-md">
-      Alma
-    </h1>
-    <p class="text-slate-300 mt-4 text-sm font-light tracking-[0.3em] uppercase text-center">
-      Mis Quince Años
-    </p>
+            <!-- Acá irán los controles de play/pausa después -->
 
-  </main>
+        </section>
 
+        <!-- Acá abajo vamos a ir agregando las otras secciones (Fotos, Cuenta Regresiva, etc.) -->
+
+    </main>
+
+    <!-- ==========================================
+         3. LÓGICA JAVASCRIPT
+         ========================================== -->
+    <script>
+        const pantallaSobre = document.getElementById('pantalla-sobre');
+        const botonAbrir = document.getElementById('boton-abrir');
+        const contenidoPrincipal = document.getElementById('contenido-principal');
+        const body = document.getElementById('body');
+        const musicaFondo = document.getElementById('musica-fondo');
+
+        botonAbrir.addEventListener('click', () => {
+            // 1. Desvanecemos la pantalla inicial
+            pantallaSobre.classList.add('fade-out');
+            
+            // 2. Esperamos que termine el efecto, ocultamos el div y mostramos la invitación
+            setTimeout(() => {
+                pantallaSobre.style.display = 'none';
+                contenidoPrincipal.classList.remove('hidden');
+                
+                // Permitimos hacer scroll en la página
+                body.classList.remove('overflow-hidden');
+                
+                // Hacemos que la invitación aparezca suavemente
+                setTimeout(() => contenidoPrincipal.classList.remove('opacity-0'), 50);
+            }, 800);
+
+            // 3. Reproducimos la música (Descomentalo cuando pongas el archivo de audio)
+            // musicaFondo.play().catch(error => console.log("El navegador bloqueó el autoplay", error));
+        });
+    </script>
 </body>
 </html>
