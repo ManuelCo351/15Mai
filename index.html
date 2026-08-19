@@ -508,14 +508,22 @@
             // Ponemos a vigilar cada foto
             Array.from(fotos).forEach(foto => observadorFotos.observe(foto));
 
-            // Auto-Play: Pasa de foto automáticamente
+                        // Auto-Play: Pasa de foto automáticamente
             setInterval(() => {
                 indexVisible++;
                 if (indexVisible >= fotos.length) {
                     indexVisible = 0; // Vuelve a la primera foto al terminar
                 }
-                // Desliza suavemente a la foto que toca
-                fotos[indexVisible].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+                
+                // ¡LA SOLUCIÓN! Usamos scrollTo para mover solo la barra horizontal 
+                // del carrusel, evitando que la página salte hacia arriba o abajo.
+                const posicionDestino = fotos[indexVisible].offsetLeft - carrusel.offsetLeft;
+                
+                carrusel.scrollTo({ 
+                    left: posicionDestino, 
+                    behavior: 'smooth' 
+                });
+                
             }, 3500); // Cambia cada 3.5 segundos
         }
 
