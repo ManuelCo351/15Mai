@@ -189,17 +189,33 @@
         <section class="py-10 relative z-10 flex flex-col items-center gap-8 px-6 w-full max-w-md mx-auto">
             
             <!-- Ubicación -->
-            <div class="bg-gradient-to-b from-white/10 to-white/5 backdrop-blur-md border border-white/20 rounded-3xl p-8 w-full text-center shadow-[0_10px_30px_rgba(0,0,0,0.5)] relative overflow-hidden">
-                <div class="absolute -top-10 -right-10 w-32 h-32 bg-blue-400/20 rounded-full blur-2xl"></div>
-                <div class="flex justify-center mb-4 text-slate-200 drop-shadow-[0_0_8px_rgba(255,255,255,0.5)]">
-                    <svg xmlns="http://www.w3.org/1998/Math/MathML" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-10 h-10"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" /><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z" /></svg>
+                        <!-- Ubicación -->
+            <!-- 1. Fíjate que le agregué "border-t-white/50" para que el borde de arriba brille más, y la clase "group" para animaciones -->
+            <div class="bg-gradient-to-b from-white/20 to-white/5 backdrop-blur-md border border-white/20 border-t-white/50 rounded-3xl p-8 w-full text-center shadow-[0_15px_30px_rgba(0,0,0,0.5)] relative overflow-hidden group">
+                
+                <!-- Resplandor de fondo -->
+                <div class="absolute -top-10 -right-10 w-32 h-32 bg-blue-400/20 rounded-full blur-2xl pointer-events-none"></div>
+
+                <!-- 2. LA MARCA DE AGUA LUNAR: Gigante, muy transparente (opacity-10) y en la esquina -->
+                <img src="13728465_22_april_2.svg" 
+                     class="absolute -bottom-16 -right-16 w-56 h-56 brightness-0 invert opacity-10 transform group-hover:rotate-12 group-hover:scale-110 transition-all duration-700 pointer-events-none" 
+                     alt="Detalle luna">
+                
+                <!-- El contenido de tu tarjeta sigue igual, pero lo ponemos sobre el fondo -->
+                <div class="relative z-10">
+                    <div class="flex justify-center mb-4 text-slate-200 drop-shadow-[0_0_8px_rgba(255,255,255,0.5)]">
+                        <svg xmlns="http://www.w3.org/1998/Math/MathML" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-10 h-10"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" /><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z" /></svg>
+                    </div>
+                    
+                    <h3 class="fuente-titulo text-4xl text-white mb-2 tracking-wide drop-shadow-md">Fiesta</h3>
+                    <p class="text-slate-300 font-light text-sm mb-6 uppercase tracking-widest leading-relaxed">
+                        Salón Malvinas Eventos<br><span class="text-xs text-slate-400">21:00 a 5:30 HS</span>
+                    </p>
+                    
+                    <a href="#" target="_blank" class="inline-block bg-slate-200 text-[#0c142b] px-8 py-3 rounded-full font-bold text-xs tracking-[0.2em] uppercase hover:bg-white hover:scale-105 transition-all shadow-[0_0_15px_rgba(255,255,255,0.3)]">Ver Ubicación</a>
                 </div>
-                <h3 class="fuente-titulo text-4xl text-white mb-2 tracking-wide drop-shadow-md">Fiesta</h3>
-                <p class="text-slate-300 font-light text-sm mb-6 uppercase tracking-widest leading-relaxed">
-                    Salón Malvinas Eventos<br><span class="text-xs text-slate-400">21:00 a 5:30 HS</span>
-                </p>
-                <a href="#" target="_blank" class="inline-block bg-slate-200 text-[#0c142b] px-8 py-3 rounded-full font-bold text-xs tracking-[0.2em] uppercase hover:bg-white hover:scale-105 transition-all">Ver Ubicación</a>
             </div>
+
 
             <!-- Dress Code -->
             <div class="bg-gradient-to-b from-white/10 to-white/5 backdrop-blur-md border border-white/20 rounded-3xl p-8 w-full text-center shadow-[0_10px_30px_rgba(0,0,0,0.5)] relative overflow-hidden">
