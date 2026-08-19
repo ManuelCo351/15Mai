@@ -52,18 +52,14 @@
         
     </style>
 </head>
-<body class="bg-gradient-to-b from-blue-950 via-[#16213e] to-blue-950 fuente-texto overflow-hidden" id="body">
+        <body class="bg-gradient-to-b from-blue-950 via-[#16213e] to-blue-950 fuente-texto overflow-hidden" id="body">
 
-    
     <!-- Contenedor del cielo estrellado (Fondo dinámico) -->
     <div id="cielo-estrellado" class="fixed inset-0 pointer-events-none z-0"></div>
     
     <!-- ==========================================
-
-    <!-- ==========================================
          1. PANTALLA DE INICIO (El "Sobre" interactivo)
          ========================================== -->
-    <!-- Le pusimos el onclick a TODA la pantalla azul, y la clase no-select -->
     <div id="pantalla-sobre" onclick="abrirInvitacion()" class="fixed inset-0 z-50 flex flex-col items-center justify-center bg-blue-950/80 transition-all duration-1000 overflow-hidden cursor-pointer no-select">
         
         <!-- Detalles en las esquinas -->
@@ -102,17 +98,15 @@
 
     <!-- ==========================================
          2. CONTENIDO PRINCIPAL (La Invitación)
-         ¡AQUÍ ESTÁ LA ETIQUETA <main> QUE FALTABA!
          ========================================== -->
-        <main id="contenido-principal" class="h-screen overflow-y-auto bg-transparent hidden opacity-0 transition-opacity duration-1000 relative z-10">
+    <main id="contenido-principal" class="h-screen overflow-y-auto bg-transparent hidden opacity-0 transition-opacity duration-1000 relative z-10">
 
         <!-- Reproductor de Audio (Oculto) -->
         <audio id="musica-fondo" loop>
-            <!-- Cuando tengas el mp3, descomentá esta línea y poné la ruta -->
             <!-- <source src="./tu-cancion.mp3" type="audio/mpeg"> -->
         </audio>
 
-        <!-- Sección 1: Hero (Nombre, música y cuenta regresiva) -->
+        <!-- SECCIÓN 1: Hero -->
         <section class="min-h-screen flex flex-col items-center justify-center relative px-6 text-center py-20">
             
             <h1 class="fuente-titulo text-7xl md:text-8xl text-white drop-shadow-[0_0_15px_rgba(255,255,255,0.6)] mb-2">Mailén</h1>
@@ -129,16 +123,19 @@
                 <span class="text-slate-300 text-xs tracking-widest uppercase">Every Breath You Take</span>
             </div>
 
-            <!-- Texto Introductorio -->
-            <p class="text-slate-200 text-sm md:text-base leading-relaxed max-w-md mx-auto mb-12 font-light">
+            <p class="text-slate-200 text-sm md:text-base leading-relaxed max-w-md mx-auto mb-10 font-light">
                 "Hay días que se vuelven inolvidables, momentos que queremos guardar para siempre y personas que hacen nuestra vida más especial. Por eso quiero que estén conmigo en esta noche tan importante..."
             </p>
 
-            <img src="./13728465_22_april_2.svg" class="w-20 h-20 mb-12 brightness-0 invert opacity-50">
+            <!-- Decorador de Fecha estilo Video -->
+            <div class="flex items-center gap-4 mb-8 opacity-90">
+                <div class="h-[1px] w-12 bg-slate-400"></div>
+                <p class="text-slate-200 tracking-[0.4em] uppercase text-sm font-semibold">Diciembre 12</p>
+                <div class="h-[1px] w-12 bg-slate-400"></div>
+            </div>
 
             <!-- Cuenta Regresiva -->
-            <h2 class="fuente-titulo text-4xl text-white mb-6 tracking-wide drop-shadow-md">Faltan</h2>
-            <div class="grid grid-cols-4 gap-3 md:gap-6 w-full max-w-lg">
+            <div class="grid grid-cols-4 gap-3 md:gap-6 w-full max-w-lg mb-4">
                 <div class="bg-white/10 backdrop-blur-md border border-white/20 rounded-xl py-3 flex flex-col items-center justify-center shadow-[0_0_15px_rgba(255,255,255,0.1)]">
                     <span id="dias" class="text-2xl md:text-4xl text-white font-semibold">00</span>
                     <span class="text-[10px] md:text-xs text-slate-300 tracking-widest uppercase mt-1">Días</span>
@@ -158,33 +155,25 @@
             </div>
         </section>
         
-        <!-- Sección 2: Carrusel de Fotos -->
-        <section class="py-16 relative z-10 w-full max-w-md mx-auto">
+        <!-- SECCIÓN 2: Carrusel Infancia -->
+        <section class="py-12 relative z-10 w-full max-w-md mx-auto">
             <div class="flex overflow-x-auto snap-x snap-mandatory gap-6 px-6 pb-8 hide-scrollbar">
-                
-                <!-- Foto 1 -->
                 <div class="snap-center shrink-0 w-[85%] aspect-[3/4] bg-white/5 backdrop-blur-sm p-3 rounded-2xl border border-white/10 shadow-[0_0_20px_rgba(0,0,0,0.5)]">
-                    <div class="w-full h-full bg-slate-800 rounded-xl overflow-hidden relative group">
-                        <img src="https://via.placeholder.com/400x500/1e293b/ffffff?text=Foto+Infancia+1" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-500" alt="Foto Mailén">
+                    <div class="w-full h-full bg-slate-800 rounded-xl overflow-hidden relative">
+                        <img src="https://via.placeholder.com/400x500/1e293b/ffffff?text=Foto+Infancia+1" class="w-full h-full object-cover opacity-80" alt="Foto Mailén">
                     </div>
                 </div>
-
-                <!-- Foto 2 -->
                 <div class="snap-center shrink-0 w-[85%] aspect-[3/4] bg-white/5 backdrop-blur-sm p-3 rounded-2xl border border-white/10 shadow-[0_0_20px_rgba(0,0,0,0.5)]">
-                    <div class="w-full h-full bg-slate-800 rounded-xl overflow-hidden relative group">
-                        <img src="https://via.placeholder.com/400x500/1e293b/ffffff?text=Foto+Infancia+2" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-500" alt="Foto Mailén">
+                    <div class="w-full h-full bg-slate-800 rounded-xl overflow-hidden relative">
+                        <img src="https://via.placeholder.com/400x500/1e293b/ffffff?text=Foto+Infancia+2" class="w-full h-full object-cover opacity-80" alt="Foto Mailén">
                     </div>
                 </div>
-
-                <!-- Foto 3 -->
                 <div class="snap-center shrink-0 w-[85%] aspect-[3/4] bg-white/5 backdrop-blur-sm p-3 rounded-2xl border border-white/10 shadow-[0_0_20px_rgba(0,0,0,0.5)]">
-                    <div class="w-full h-full bg-slate-800 rounded-xl overflow-hidden relative group">
-                        <img src="https://via.placeholder.com/400x500/1e293b/ffffff?text=Foto+Infancia+3" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-500" alt="Foto Mailén">
+                    <div class="w-full h-full bg-slate-800 rounded-xl overflow-hidden relative">
+                        <img src="https://via.placeholder.com/400x500/1e293b/ffffff?text=Foto+Infancia+3" class="w-full h-full object-cover opacity-80" alt="Foto Mailén">
                     </div>
                 </div>
-
             </div>
-            
             <div class="flex justify-center gap-2 mt-2">
                 <div class="w-2 h-2 rounded-full bg-slate-300 shadow-[0_0_5px_rgba(255,255,255,0.8)]"></div>
                 <div class="w-2 h-2 rounded-full bg-slate-600"></div>
@@ -192,42 +181,28 @@
             </div>
         </section>
 
-        <!-- Sección 3: Información (Ubicación y Dress Code) -->
-        <section class="py-10 relative z-10 flex flex-col items-center gap-8 px-6">
+        <!-- SECCIÓN 3: Tarjetas de Información (Agrupadas) -->
+        <section class="py-10 relative z-10 flex flex-col items-center gap-8 px-6 w-full max-w-md mx-auto">
             
             <!-- Ubicación -->
-            <div class="bg-gradient-to-b from-white/10 to-white/5 backdrop-blur-md border border-white/20 rounded-3xl p-8 w-full max-w-md text-center shadow-[0_10px_30px_rgba(0,0,0,0.5)] relative overflow-hidden">
+            <div class="bg-gradient-to-b from-white/10 to-white/5 backdrop-blur-md border border-white/20 rounded-3xl p-8 w-full text-center shadow-[0_10px_30px_rgba(0,0,0,0.5)] relative overflow-hidden">
                 <div class="absolute -top-10 -right-10 w-32 h-32 bg-blue-400/20 rounded-full blur-2xl"></div>
-                
                 <div class="flex justify-center mb-4 text-slate-200 drop-shadow-[0_0_8px_rgba(255,255,255,0.5)]">
-                    <svg xmlns="http://www.w3.org/1998/Math/MathML" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-10 h-10">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z" />
-                    </svg>
+                    <svg xmlns="http://www.w3.org/1998/Math/MathML" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-10 h-10"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" /><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z" /></svg>
                 </div>
-                
                 <h3 class="fuente-titulo text-4xl text-white mb-2 tracking-wide drop-shadow-md">Fiesta</h3>
                 <p class="text-slate-300 font-light text-sm mb-6 uppercase tracking-widest leading-relaxed">
-                    Salón Malvinas Eventos<br>
-                    <span class="text-xs text-slate-400">21:00 a 5:30 HS</span>
+                    Salón Malvinas Eventos<br><span class="text-xs text-slate-400">21:00 a 5:30 HS</span>
                 </p>
-                
-                <!-- Enlace a Google Maps -->
-                <a href="#" target="_blank" class="inline-block bg-slate-200 text-[#0c142b] px-8 py-3 rounded-full font-bold text-xs tracking-[0.2em] uppercase hover:bg-white hover:scale-105 hover:shadow-[0_0_20px_rgba(255,255,255,0.6)] transition-all duration-300">
-                    Ver Ubicación
-                </a>
+                <a href="#" target="_blank" class="inline-block bg-slate-200 text-[#0c142b] px-8 py-3 rounded-full font-bold text-xs tracking-[0.2em] uppercase hover:bg-white hover:scale-105 transition-all">Ver Ubicación</a>
             </div>
 
             <!-- Dress Code -->
-            <div class="bg-gradient-to-b from-white/10 to-white/5 backdrop-blur-md border border-white/20 rounded-3xl p-8 w-full max-w-md text-center shadow-[0_10px_30px_rgba(0,0,0,0.5)] relative overflow-hidden">
+            <div class="bg-gradient-to-b from-white/10 to-white/5 backdrop-blur-md border border-white/20 rounded-3xl p-8 w-full text-center shadow-[0_10px_30px_rgba(0,0,0,0.5)] relative overflow-hidden">
                 <div class="absolute -bottom-10 -left-10 w-32 h-32 bg-slate-400/20 rounded-full blur-2xl"></div>
-
                 <div class="flex justify-center mb-4 text-slate-200 drop-shadow-[0_0_8px_rgba(255,255,255,0.5)]">
-                    <svg xmlns="http://www.w3.org/1998/Math/MathML" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-10 h-10">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M21 12a2.25 2.25 0 0 0-2.25-2.25H15a3 3 0 1 1-6 0H5.25A2.25 2.25 0 0 0 3 12m18 0v6a2.25 2.25 0 0 1-2.25 2.25H5.25A2.25 2.25 0 0 1 3 18v-6m18 0V9M3 12V9m18 0a2.25 2.25 0 0 0-2.25-2.25H5.25A2.25 2.25 0 0 0 3 9m18 0V6a2.25 2.25 0 0 0-2.25-2.25H5.25A2.25 2.25 0 0 0 3 6v3" />
-                    </svg>
+                    <svg xmlns="http://www.w3.org/1998/Math/MathML" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-10 h-10"><path stroke-linecap="round" stroke-linejoin="round" d="M21 12a2.25 2.25 0 0 0-2.25-2.25H15a3 3 0 1 1-6 0H5.25A2.25 2.25 0 0 0 3 12m18 0v6a2.25 2.25 0 0 1-2.25 2.25H5.25A2.25 2.25 0 0 1 3 18v-6m18 0V9M3 12V9m18 0a2.25 2.25 0 0 0-2.25-2.25H5.25A2.25 2.25 0 0 0 3 9m18 0V6a2.25 2.25 0 0 0-2.25-2.25H5.25A2.25 2.25 0 0 0 3 6v3" /></svg>
                 </div>
-                
                 <h3 class="fuente-titulo text-4xl text-white mb-2 tracking-wide drop-shadow-md">Dress Code</h3>
                 <h4 class="text-lg text-slate-200 font-semibold mb-3 tracking-widest uppercase">Elegante</h4>
                 <p class="text-slate-300 font-light text-sm leading-relaxed">
@@ -235,98 +210,70 @@
                 </p>
             </div>
 
-        </section>
-        
-        <!-- Espacio extra al final para que se pueda scrollear bien -->
-        <div class="h-32"></div>
-                        <!-- Tarjeta: Playlist -->
-            <div class="bg-gradient-to-b from-white/10 to-white/5 backdrop-blur-md border border-white/20 rounded-3xl p-8 w-full max-w-md text-center shadow-[0_10px_30px_rgba(0,0,0,0.5)] relative overflow-hidden">
+            <!-- Playlist -->
+            <div class="bg-gradient-to-b from-white/10 to-white/5 backdrop-blur-md border border-white/20 rounded-3xl p-8 w-full text-center shadow-[0_10px_30px_rgba(0,0,0,0.5)] relative overflow-hidden">
                 <div class="absolute -top-10 -left-10 w-32 h-32 bg-purple-400/20 rounded-full blur-2xl"></div>
-
                 <div class="flex justify-center mb-4 text-slate-200 drop-shadow-[0_0_8px_rgba(255,255,255,0.5)]">
-                    <!-- Icono de Notas Musicales -->
-                    <svg xmlns="http://www.w3.org/1998/Math/MathML" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-10 h-10">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="m9 9 10.5-3m0 6.553v3.75a2.25 2.25 0 0 1-1.632 2.163l-1.32.377a1.803 1.803 0 1 1-.99-3.467l2.31-.66a2.25 2.25 0 0 0 1.632-2.163Zm0 0V2.25L9 5.25v10.303m0 0v3.75a2.25 2.25 0 0 1-1.632 2.163l-1.32.377a1.803 1.803 0 0 1-.99-3.467l2.31-.66A2.25 2.25 0 0 0 9 15.553Z" />
-                    </svg>
+                    <svg xmlns="http://www.w3.org/1998/Math/MathML" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-10 h-10"><path stroke-linecap="round" stroke-linejoin="round" d="m9 9 10.5-3m0 6.553v3.75a2.25 2.25 0 0 1-1.632 2.163l-1.32.377a1.803 1.803 0 1 1-.99-3.467l2.31-.66a2.25 2.25 0 0 0 1.632-2.163Zm0 0V2.25L9 5.25v10.303m0 0v3.75a2.25 2.25 0 0 1-1.632 2.163l-1.32.377a1.803 1.803 0 0 1-.99-3.467l2.31-.66A2.25 2.25 0 0 0 9 15.553Z" /></svg>
                 </div>
-                
                 <h3 class="fuente-titulo text-4xl text-white mb-2 tracking-wide drop-shadow-md">Playlist</h3>
                 <p class="text-slate-300 font-light text-sm leading-relaxed mb-6">
                     ¿Qué canción no puede faltar en la fiesta? ¡Ayudame a armar la mejor playlist de la noche!
                 </p>
-                
-                <!-- Botón de recomendación -->
-                <a href="https://wa.me/5491100000000?text=¡Hola!%20Para%20la%20playlist%20de%20tus%2015,%20sugiero%20la%20canción:%20" target="_blank" class="inline-block bg-slate-200 text-[#0c142b] px-8 py-3 rounded-full font-bold text-xs tracking-[0.2em] uppercase hover:bg-white hover:scale-105 hover:shadow-[0_0_20px_rgba(255,255,255,0.6)] transition-all duration-300">
-                    Recomendar Canción
-                </a>
+                <a href="#" target="_blank" class="inline-block bg-slate-200 text-[#0c142b] px-8 py-3 rounded-full font-bold text-xs tracking-[0.2em] uppercase hover:bg-white hover:scale-105 transition-all">Recomendar Canción</a>
             </div>
-            <!-- Tarjeta: Regalos -->
-            <div class="bg-gradient-to-b from-white/10 to-white/5 backdrop-blur-sm border border-white/20 rounded-3xl p-8 w-full max-w-md text-center shadow-[0_10px_30px_rgba(0,0,0,0.5)] relative overflow-hidden mt-2">
-                
+
+            <!-- Regalos -->
+            <div class="bg-gradient-to-b from-white/10 to-white/5 backdrop-blur-md border border-white/20 rounded-3xl p-8 w-full text-center shadow-[0_10px_30px_rgba(0,0,0,0.5)] relative overflow-hidden">
                 <div class="flex justify-center mb-4 text-slate-200 drop-shadow-[0_0_8px_rgba(255,255,255,0.5)]">
-                    <!-- Icono de Regalo -->
-                    <svg xmlns="http://www.w3.org/1998/Math/MathML" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-10 h-10">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M21 11.25v8.25a1.5 1.5 0 0 1-1.5 1.5H5.25a1.5 1.5 0 0 1-1.5-1.5v-8.25M12 4.875A2.625 2.625 0 1 0 9.375 7.5H12m0-2.625V7.5m0-2.625A2.625 2.625 0 1 1 14.625 7.5H12m0 0V21m-8.625-9.75h18c.621 0 1.125-.504 1.125-1.125v-1.5c0-.621-.504-1.125-1.125-1.125h-18c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125Z" />
-                    </svg>
+                    <svg xmlns="http://www.w3.org/1998/Math/MathML" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-10 h-10"><path stroke-linecap="round" stroke-linejoin="round" d="M21 11.25v8.25a1.5 1.5 0 0 1-1.5 1.5H5.25a1.5 1.5 0 0 1-1.5-1.5v-8.25M12 4.875A2.625 2.625 0 1 0 9.375 7.5H12m0-2.625V7.5m0-2.625A2.625 2.625 0 1 1 14.625 7.5H12m0 0V21m-8.625-9.75h18c.621 0 1.125-.504 1.125-1.125v-1.5c0-.621-.504-1.125-1.125-1.125h-18c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125Z" /></svg>
                 </div>
-                
                 <h3 class="fuente-titulo text-4xl text-white mb-2 tracking-wide drop-shadow-md">Regalos</h3>
                 <p class="text-slate-300 font-light text-sm leading-relaxed mb-6">
                     El mejor regalo es que compartas esta noche conmigo. Si deseás hacerme un presente, podés ayudarme con mi viaje a través de una transferencia:
                 </p>
-                
-                <!-- Caja del Alias -->
                 <div class="bg-[#0c142b]/50 rounded-xl p-4 border border-white/10">
                     <p class="text-xs text-slate-400 uppercase tracking-widest mb-1">Alias / CBU</p>
                     <p class="text-lg text-white font-semibold tracking-wider">mailen.mis15</p>
                 </div>
             </div>
-        </section> <!-- Asegurate de que cierre la sección anterior -->
 
-        <!-- ==========================================
-             SECCIÓN 4: CARRUSEL DE FOTOS ACTUALES
-             ========================================== -->
+        </section>
+
+        <!-- SECCIÓN 4: Carrusel Mi Book -->
         <section class="py-12 relative z-10 w-full max-w-md mx-auto">
             <h2 class="fuente-titulo text-5xl text-white text-center mb-8 tracking-wide drop-shadow-md">Mi Book</h2>
-            
             <div class="flex overflow-x-auto snap-x snap-mandatory gap-6 px-6 pb-8 hide-scrollbar">
-                
-                <!-- Foto 1 (Estilo Polaroid) -->
                 <div class="snap-center shrink-0 w-[85%] bg-white/10 backdrop-blur-md p-3 pb-12 rounded-xl border border-white/20 shadow-[0_15px_30px_rgba(0,0,0,0.6)] transform -rotate-2">
                     <div class="w-full aspect-[3/4] bg-slate-800 rounded-md overflow-hidden">
-                        <img src="https://via.placeholder.com/400x500/1e293b/ffffff?text=Foto+Actual+1" class="w-full h-full object-cover" alt="Foto Book 1">
+                        <img src="https://via.placeholder.com/400x500/1e293b/ffffff?text=Foto+Actual+1" class="w-full h-full object-cover" alt="Foto Book">
                     </div>
                 </div>
-
-                <!-- Foto 2 (Estilo Polaroid) -->
                 <div class="snap-center shrink-0 w-[85%] bg-white/10 backdrop-blur-md p-3 pb-12 rounded-xl border border-white/20 shadow-[0_15px_30px_rgba(0,0,0,0.6)] transform rotate-2">
                     <div class="w-full aspect-[3/4] bg-slate-800 rounded-md overflow-hidden">
-                        <img src="https://via.placeholder.com/400x500/1e293b/ffffff?text=Foto+Actual+2" class="w-full h-full object-cover" alt="Foto Book 2">
+                        <img src="https://via.placeholder.com/400x500/1e293b/ffffff?text=Foto+Actual+2" class="w-full h-full object-cover" alt="Foto Book">
                     </div>
                 </div>
-
             </div>
         </section>
             
-            <!-- Confirmación de Asistencia (RSVP) -->
-            <div class="mt-10 text-center w-full max-w-md">
-                <h3 class="fuente-titulo text-5xl text-white mb-4 tracking-wide drop-shadow-md">Asistencia</h3>
-                <p class="text-slate-300 font-light text-sm leading-relaxed mb-8">
-                    Por favor, confirmá tu asistencia antes del 10 de Noviembre para poder organizarnos mejor.
-                </p>
-                
-                <!-- Botón de WhatsApp -->
-                <a href="https://wa.me/5491100000000?text=¡Hola!%20Confirmo%20mi%20asistencia%20a%20los%2015%20de%20Mailén%20✨" target="_blank" class="inline-block bg-slate-200 text-[#0c142b] px-10 py-4 rounded-full font-bold text-sm tracking-[0.2em] uppercase hover:bg-white hover:scale-105 hover:shadow-[0_0_20px_rgba(255,255,255,0.6)] transition-all duration-300 w-full">
-                    Confirmar por WhatsApp
-                </a>
-            </div>
+        <!-- SECCIÓN 5: Confirmación de Asistencia (RSVP) -->
+        <section class="py-10 relative z-10 w-full max-w-md mx-auto px-6 text-center">
+            <h3 class="fuente-titulo text-5xl text-white mb-4 tracking-wide drop-shadow-md">Asistencia</h3>
+            <p class="text-slate-300 font-light text-sm leading-relaxed mb-8">
+                Por favor, confirmá tu asistencia antes del 10 de Noviembre para poder organizarnos mejor.
+            </p>
+            <a href="#" target="_blank" class="inline-block bg-slate-200 text-[#0c142b] px-10 py-4 rounded-full font-bold text-sm tracking-[0.2em] uppercase hover:bg-white hover:scale-105 hover:shadow-[0_0_20px_rgba(255,255,255,0.6)] transition-all duration-300 w-full">
+                Confirmar Asistencia
+            </a>
+        </section>
 
-            <!-- Footer / Créditos de tu agencia -->
-            <footer class="mt-20 pt-8 border-t border-white/10 w-full text-center">
-                <p class="text-slate-400 text-[10px] font-light tracking-[0.3em] uppercase">
-                    Diseñado con <span class="text-slate-200">✨</span> por Tecno Lab Sur
-                </p>
-            </footer>
+        <!-- Footer -->
+        <footer class="mt-10 pt-8 pb-12 border-t border-white/10 w-full text-center relative z-10">
+            <p class="text-slate-400 text-[10px] font-light tracking-[0.3em] uppercase">
+                Diseñado con <span class="text-slate-200">✨</span> por Tecno Lab Sur
+            </p>
+        </footer>
             
     </main>
 
@@ -334,46 +281,34 @@
          3. LÓGICA JAVASCRIPT
          ========================================== -->
     <script>
-                // ----------------------------------------------------
-        // Lógica del Sobre Inicial (Blindada)
-        // ----------------------------------------------------
+        // Lógica del Sobre
         function abrirInvitacion() {
             const pantallaSobre = document.getElementById('pantalla-sobre');
             const contenidoPrincipal = document.getElementById('contenido-principal');
             const body = document.getElementById('body');
             const musicaFondo = document.getElementById('musica-fondo');
 
-            // 1. Desvanece el sobre
             pantallaSobre.classList.add('fade-out');
             
             setTimeout(() => {
-                // 2. Oculta el sobre y muestra el contenido principal
                 pantallaSobre.style.display = 'none';
                 contenidoPrincipal.classList.remove('hidden');
-                
-                // 3. Habilita el scroll
                 body.classList.remove('overflow-hidden');
-                
-                // 4. Aparece suavemente la invitación
                 setTimeout(() => contenidoPrincipal.classList.remove('opacity-0'), 50);
             }, 800);
 
-            // 5. Intenta reproducir la música si existe
             if (musicaFondo) {
                 musicaFondo.play().catch(error => console.log("Navegador bloqueó autoplay", error));
             }
         }
-        
-
-        // ----------------------------------------------------
-        // Lógica de la Música (Play / Pausa)
-        // ----------------------------------------------------
+        // Lógica de la Música
         const btnMusica = document.getElementById('btn-musica');
         const pathPlay = document.getElementById('path-play');
         const pathPausa = document.getElementById('path-pausa');
         let reproduciendo = true; 
 
         btnMusica.addEventListener('click', () => {
+            const musicaFondo = document.getElementById('musica-fondo');
             if (reproduciendo) {
                 // musicaFondo.pause(); 
                 pathPausa.classList.add('hidden');
@@ -386,9 +321,7 @@
             reproduciendo = !reproduciendo;
         });
 
-        // ----------------------------------------------------
         // Lógica de la Cuenta Regresiva
-        // ----------------------------------------------------
         const fechaFiesta = new Date("December 12, 2026 21:00:00").getTime();
 
         const actualizarReloj = setInterval(function() {
@@ -414,22 +347,18 @@
             }
         }, 1000); 
 
-                // ----------------------------------------------------
         // Lógica del Cielo Estrellado
-        // ----------------------------------------------------
         function crearEstrellas() {
             const cielo = document.getElementById('cielo-estrellado');
-            const cantidadEstrellas = 80; 
+            const cantidadEstrellas = 40; 
 
             for (let i = 0; i < cantidadEstrellas; i++) {
                 const estrella = document.createElement('div');
-                
                 estrella.classList.add('absolute', 'bg-white', 'rounded-full');
 
                 const size = Math.random() * 2 + 1;
                 estrella.style.width = `${size}px`;
                 estrella.style.height = `${size}px`;
-
                 estrella.style.left = `${Math.random() * 100}%`;
                 estrella.style.top = `${Math.random() * 100}%`;
 
@@ -442,35 +371,25 @@
                 cielo.appendChild(estrella);
             }
         }
-
-        // Ejecutamos la función para que aparezcan las estrellas
         crearEstrellas();
-                // ----------------------------------------------------
+
         // Lógica de Animación al Scrollear (Fade-in)
-        // ----------------------------------------------------
-        // Como nuestro contenedor principal es el que hace scroll, 
-        // le decimos al "vigía" que mire dentro de él.
         const contenedorScroll = document.getElementById('contenido-principal');
-        
         const observador = new IntersectionObserver((entradas) => {
             entradas.forEach(entrada => {
                 if (entrada.isIntersecting) {
-                    // Cuando la tarjeta entra en pantalla, le agregamos la clase que la hace visible
                     entrada.target.classList.add('activa');
                 }
             });
         }, {
             root: contenedorScroll,
-            threshold: 0.15 // La animación salta cuando el 15% de la tarjeta ya se asomó
+            threshold: 0.15
         });
 
-        // Buscamos todas las tarjetas de información, el carrusel y el pie de página.
-        // Omitimos la primera sección porque esa ya aparece sola al abrir el sobre.
-        const elementosAAnimar = document.querySelectorAll('section:not(:first-of-type), .bg-gradient-to-b, .mt-10, footer');
-        
+        const elementosAAnimar = document.querySelectorAll('section:not(:first-of-type), footer');
         elementosAAnimar.forEach(elemento => {
-            elemento.classList.add('revelar'); // Los oculta al principio
-            observador.observe(elemento);      // Los empieza a vigilar
+            elemento.classList.add('revelar');
+            observador.observe(elemento);
         });
         
     </script>
