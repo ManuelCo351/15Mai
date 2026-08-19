@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cámara Compartida - Mis 15 Mailén</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        .fuente-titulo { font-family: 'Great Vibes', cursive; }
+        .fuente-texto { font-family: 'Montserrat', sans-serif; }
+    </style>
+</head>
+<body class="bg-gradient-to-b from-blue-950 via-blue-800 to-blue-950 fuente-texto min-h-screen text-slate-200 relative pb-20">
+
+    <!-- Botón Volver -->
+    <a href="index.html" class="fixed top-6 left-6 z-50 bg-white/10 backdrop-blur-md border border-white/20 px-5 py-2 rounded-full text-xs uppercase tracking-widest hover:bg-white/20 transition-all flex items-center gap-2">
+        <span>←</span> Volver
+    </a>
+
+    <!-- Nebulosas de fondo -->
+    <div class="fixed top-[15%] -left-20 w-72 h-72 bg-blue-500/20 rounded-full blur-[100px] pointer-events-none z-0"></div>
+    <div class="fixed top-[45%] -right-20 w-80 h-80 bg-purple-400/15 rounded-full blur-[100px] pointer-events-none z-0"></div>
+
+    <main class="relative z-10 max-w-4xl mx-auto px-6 pt-28 text-center">
+        <h1 class="fuente-titulo text-6xl md:text-7xl text-white drop-shadow-[0_0_15px_rgba(255,255,255,0.6)] mb-2">Nuestros Recuerdos</h1>
+        <p class="text-slate-300 tracking-[0.2em] uppercase text-xs mb-12 font-light">La fiesta vista a través de tus ojos</p>
+
+        <!-- Grid de Categorías -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+            
+            <!-- Tarjeta 1 -->
+            <div class="bg-white/10 backdrop-blur-md border border-white/20 border-t-white/50 rounded-3xl p-6 flex flex-col justify-center items-center h-64 relative overflow-hidden group shadow-xl">
+                <img src="./13728465_22_april_2.svg" class="absolute -bottom-10 -right-10 w-40 h-40 brightness-0 invert opacity-10 group-hover:rotate-12 transition-all duration-700 pointer-events-none">
+                <h3 class="fuente-titulo text-4xl text-white mb-2 z-10">La Previa</h3>
+                <p class="text-[10px] tracking-widest uppercase mb-6 z-10 text-slate-300">Preparativos</p>
+                <button class="z-10 bg-slate-200 text-[#0c142b] px-6 py-2 rounded-full font-bold text-xs tracking-[0.2em] uppercase hover:scale-105 transition-all" onclick="activarInput('inputCivil')">Subir Foto</button>
+                <input type="file" id="inputCivil" hidden accept="image/*" onchange="subirFoto(this, ids.CIVIL)">
+            </div>
+
+            <!-- Tarjeta 2 -->
+            <div class="bg-white/10 backdrop-blur-md border border-white/20 border-t-white/50 rounded-3xl p-6 flex flex-col justify-center items-center h-64 relative overflow-hidden group shadow-xl">
+                <img src="./13728465_22_april_2.svg" class="absolute -bottom-10 -right-10 w-40 h-40 brightness-0 invert opacity-10 group-hover:rotate-12 transition-all duration-700 pointer-events-none">
+                <h3 class="fuente-titulo text-4xl text-white mb-2 z-10">La Fiesta</h3>
+                <p class="text-[10px] tracking-widest uppercase mb-6 z-10 text-slate-300">Los mejores momentos</p>
+                <button class="z-10 bg-slate-200 text-[#0c142b] px-6 py-2 rounded-full font-bold text-xs tracking-[0.2em] uppercase hover:scale-105 transition-all" onclick="activarInput('inputFiesta')">Subir Foto</button>
+                <input type="file" id="inputFiesta" hidden accept="image/*" onchange="subirFoto(this, ids.FIESTA)">
+            </div>
+
+            <!-- Tarjeta 3 -->
+            <div class="bg-white/10 backdrop-blur-md border border-white/20 border-t-white/50 rounded-3xl p-6 flex flex-col justify-center items-center h-64 relative overflow-hidden group shadow-xl">
+                <img src="./13728465_22_april_2.svg" class="absolute -bottom-10 -right-10 w-40 h-40 brightness-0 invert opacity-10 group-hover:rotate-12 transition-all duration-700 pointer-events-none">
+                <h3 class="fuente-titulo text-4xl text-white mb-2 z-10">Selfies</h3>
+                <p class="text-[10px] tracking-widest uppercase mb-6 z-10 text-slate-300">Tu sonrisa y la mía</p>
+                <button class="z-10 bg-slate-200 text-[#0c142b] px-6 py-2 rounded-full font-bold text-xs tracking-[0.2em] uppercase hover:scale-105 transition-all" onclick="activarInput('inputSelfies')">Subir Foto</button>
+                <input type="file" id="inputSelfies" hidden accept="image/*" onchange="subirFoto(this, ids.SELFIES)">
+            </div>
+        </div>
+
+        <!-- Botón de Videos -->
+        <a href="https://drive.google.com/drive/folders/15gOtiz7acDxaFt1NUMp8Gdazkbyo4h_U?usp=drive_link" target="_blank" class="inline-block border border-white/30 text-white px-8 py-3 rounded-full font-bold text-xs tracking-[0.2em] uppercase hover:bg-white/10 transition-all mb-8">
+            Subir Video al Drive
+        </a>
+
+        <!-- Mensaje de Estado -->
+        <div id="statusMessage" class="h-6 text-sm tracking-widest uppercase font-bold mb-10 transition-all"></div>
+
+        <!-- Ver Álbum Completo -->
+        <a href="https://drive.google.com/drive/folders/1wNCv9PM1fcQ3LrXnd_qrUZHRTg0EF8yE?usp=drive_link" target="_blank" class="inline-block mt-10 text-slate-300 border-b border-slate-500 pb-1 hover:text-white transition-all text-sm tracking-widest uppercase">
+            Ver Álbum Completo en Drive
+        </a>
+    </main>
+
+    <!-- Tu script exacto para la subida -->
+    <script>
+        const URL_API = "https://script.google.com/macros/s/AKfycbz1QEnH2YDDwxUeq1uL7q4MN9kFODKDBd3gZYl3CLahLPMR6Cb63UpRq4RvmTMQgcNK/exec"; 
+
+        const ids = {
+            CIVIL:   "1nEqaOv0HC2U2yR0Ie4Xj6DXHJ6VYqsCd",
+            FIESTA:  "1xWzZCLCfG5CRMAa14UhAdWeqdS7jiCOd",
+            SELFIES: "1sOUxzILx0B_Ncdrxf7z1kepJKV5CWPad", 
+        };
+
+        function activarInput(idInput) { document.getElementById(idInput).click(); }
+
+        async function subirFoto(input, idCarpetaDestino) {
+            const archivo = input.files[0];
+            if (!archivo) return;
+            if (!archivo.type.startsWith('image/')) { mostrarEstado("⚠️ Solo imágenes.", "error"); return; }
+
+            mostrarEstado("⏳ Subiendo a la luna...", "neutro");
+            const reader = new FileReader();
+            reader.readAsDataURL(archivo);
+            
+            reader.onload = async function() {
+                try {
+                    const respuesta = await fetch(URL_API, {
+                        method: "POST",
+                        body: JSON.stringify({
+                            imagen: reader.result,
+                            tipo: archivo.type,
+                            nombre: archivo.name,
+                            idCarpeta: idCarpetaDestino 
+                        })
+                    });
+                    const datos = await respuesta.json();
+                    
+                    if (datos.status === "success") {
+                        mostrarEstado("✅ ¡Recuerdo guardado!", "exito");
+                    } else { mostrarEstado("❌ Error al subir.", "error"); }
+                } catch (e) { mostrarEstado("❌ Error de conexión.", "error"); }
+            };
+            input.value = ''; 
+        }
+
+        function mostrarEstado(mensaje, tipo) {
+            const box = document.getElementById('statusMessage');
+            box.innerText = mensaje;
+            box.style.color = (tipo === 'exito') ? '#a7f3d0' : (tipo === 'error' ? '#fecaca' : '#cbd5e1');
+            if(tipo !== 'exito') setTimeout(() => { box.innerText = ""; }, 5000);
+        }
+    </script>
+</body>
+</html>
