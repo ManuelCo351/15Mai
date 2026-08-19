@@ -23,11 +23,12 @@
         }
         
         /* Animación para que las estrellas brillen */
+                /* Animación optimizada para no trabar celulares */
         @keyframes titilar {
-            0% { opacity: 0.1; transform: scale(0.8); }
-            50% { opacity: 1; transform: scale(1.2); box-shadow: 0 0 8px rgba(255,255,255,0.8); }
-            100% { opacity: 0.1; transform: scale(0.8); }
+            0%, 100% { opacity: 0.2; transform: scale(0.8) translateZ(0); }
+            50% { opacity: 1; transform: scale(1.2) translateZ(0); }
         }
+
 
         /* Ocultar barra de scroll en el carrusel pero permitir deslizamiento */
         .hide-scrollbar::-webkit-scrollbar { display: none; }
@@ -53,7 +54,7 @@
          1. PANTALLA DE INICIO (El "Sobre" interactivo)
          ========================================== -->
     <!-- Le pusimos el onclick a TODA la pantalla azul, y la clase no-select -->
-    <div id="pantalla-sobre" onclick="abrirInvitacion()" class="fixed inset-0 z-50 flex flex-col items-center justify-center bg-blue-950/80 backdrop-blur-md transition-all duration-1000 overflow-hidden cursor-pointer no-select">
+    <div id="pantalla-sobre" onclick="abrirInvitacion()" class="fixed inset-0 z-50 flex flex-col items-center justify-center bg-blue-950/80 transition-all duration-1000 overflow-hidden cursor-pointer no-select">
         
         <!-- Detalles en las esquinas -->
         <img src="./13728465_22_april_2.svg" class="absolute -top-16 -left-16 w-64 h-64 md:w-80 md:h-80 brightness-0 invert opacity-[0.12] -rotate-12 pointer-events-none" alt="decoración">
