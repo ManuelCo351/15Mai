@@ -54,9 +54,16 @@
 </head>
         <body class="bg-gradient-to-b from-blue-950 via-[#16213e] to-blue-950 fuente-texto overflow-hidden" id="body">
 
-    <!-- Contenedor del cielo estrellado (Fondo dinámico) -->
+        <!-- Contenedor del cielo estrellado (Fondo dinámico) -->
     <div id="cielo-estrellado" class="fixed inset-0 pointer-events-none z-0"></div>
     
+    <!-- LA GRAN LUNA FIJA DE FONDO -->
+    <div class="fixed top-20 -right-16 w-64 h-64 md:w-96 md:h-96 rounded-full bg-gradient-to-tr from-slate-100 to-slate-400 opacity-10 blur-[3px] shadow-[0_0_80px_rgba(255,255,255,0.3)] pointer-events-none z-0">
+        <!-- Simulación de los cráteres (Opcional, con puro CSS) -->
+        <div class="absolute top-10 left-10 w-12 h-12 bg-blue-950/20 rounded-full blur-sm"></div>
+        <div class="absolute bottom-20 right-16 w-20 h-20 bg-blue-950/10 rounded-full blur-md"></div>
+    </div>
+
     <!-- ==========================================
          1. PANTALLA DE INICIO (El "Sobre" interactivo)
          ========================================== -->
