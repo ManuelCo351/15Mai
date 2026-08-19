@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mis 15 - Alma | Temática Lunar</title>
+    <title>Mis 15 - Mailen | Temática Lunar</title>
     
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -45,13 +45,13 @@
     <!-- Contenedor del cielo estrellado (Fondo dinámico) -->
     <div id="cielo-estrellado" class="fixed inset-0 pointer-events-none z-0"></div>
     
-        <!-- ==========================================
+            <!-- ==========================================
          1. PANTALLA DE INICIO (El "Sobre" interactivo)
          ========================================== -->
     <div id="pantalla-sobre" class="fixed inset-0 z-50 flex flex-col items-center justify-center bg-blue-950/80 backdrop-blur-md transition-all duration-1000">
         
         <!-- Textos Superiores (Nombre) -->
-        <div class="text-center mb-10">
+        <div class="text-center mb-8">
             <h1 class="fuente-titulo text-7xl md:text-8xl text-white drop-shadow-[0_0_15px_rgba(255,255,255,0.6)] mb-2">
                 Alma
             </h1>
@@ -61,28 +61,32 @@
         </div>
 
         <!-- El Sobre Interactivo -->
-        <div id="boton-abrir" class="relative w-[280px] h-[180px] md:w-[320px] md:h-[200px] cursor-pointer group hover:-translate-y-2 transition-transform duration-500">
+        <div id="boton-abrir" class="relative w-[320px] h-[220px] md:w-[380px] md:h-[260px] cursor-pointer group hover:-translate-y-2 transition-transform duration-500">
             
-            <!-- Cuerpo base del sobre (Sombra y contorno) -->
-            <div class="absolute inset-0 bg-[#16213e] rounded-md shadow-[0_15px_40px_rgba(0,0,0,0.6)] border border-white/10 overflow-hidden">
-                
-                <!-- Solapas laterales y base (Simuladas con polígonos CSS) -->
-                <div class="absolute top-0 left-0 w-full h-full bg-[#1b2a4e]" style="clip-path: polygon(0 0, 50% 50%, 0 100%);"></div>
-                <div class="absolute top-0 right-0 w-full h-full bg-[#1b2a4e]" style="clip-path: polygon(100% 0, 50% 50%, 100% 100%);"></div>
-                <div class="absolute bottom-0 left-0 w-full h-full bg-[#1f305c]" style="clip-path: polygon(0 100%, 50% 50%, 100% 100%); z-index: 10;"></div>
+            <!-- Cuerpo base del sobre (El rectángulo trasero oscuro) -->
+            <div class="absolute inset-0 bg-[#0c142b] shadow-2xl"></div>
+
+            <!-- Solapa inferior y laterales (Triángulos que suben para armar el bolsillo) -->
+            <!-- Usamos un color un poquito más claro para separar planos -->
+            <div class="absolute inset-0 bg-[#142042]" style="clip-path: polygon(0 0, 0 100%, 100% 100%, 100% 0, 50% 55%); z-index: 10;"></div>
+
+            <!-- Solapa superior (La tapa que baja) -->
+            <!-- Es la que cierra el sobre. Usamos un azul intermedio -->
+            <div class="absolute top-0 left-0 w-full h-[65%] bg-[#1a2955]" style="clip-path: polygon(0 0, 100% 0, 50% 100%); z-index: 20;"></div>
+
+            <!-- Sello SVG Plateado (Ahora es enorme y sin fondo) -->
+            <div class="absolute top-[65%] left-1/2 -translate-x-1/2 -translate-y-[60%] z-30 transition-transform duration-300 group-hover:scale-110">
+                <!-- Llamamos a tu SVG y le damos un filtro para que quede blanco/plateado brillante -->
+                <img src="./45008982_9123934.svg" 
+                     class="w-20 h-20 md:w-24 md:h-24 brightness-0 invert drop-shadow-[0_0_12px_rgba(255,255,255,0.8)]" 
+                     alt="Sello lunar">
             </div>
 
-            <!-- Solapa superior (La tapa del sobre) -->
-            <div class="absolute top-0 left-0 w-full h-full bg-[#25396d] shadow-2xl" style="clip-path: polygon(0 0, 100% 0, 50% 55%); z-index: 20;"></div>
-
-            <!-- Sello de Cera Plateado -->
-            <div class="absolute top-[55%] left-1/2 -translate-x-1/2 -translate-y-1/2 z-30 transition-transform duration-300 group-hover:scale-110">
-                <!-- Círculo con degradado plateado para simular relieve -->
-                <div class="bg-gradient-to-br from-slate-100 via-slate-300 to-slate-500 rounded-full w-14 h-14 md:w-16 md:h-16 flex items-center justify-center shadow-[0_0_20px_rgba(255,255,255,0.4)] border border-slate-100">
-                    
-                    <!-- SVG de la Luna (Con brillo 0 y opacidad baja para que parezca un grabado oscuro en la chapa plateada) -->
-                    <img src="./45008982_9123934.svg" class="w-8 h-8 md:w-10 md:h-10 brightness-0 opacity-70" alt="Sello lunar">
-                </div>
+            <!-- Ícono de Play (Como en la foto de referencia, centrado arriba del sello) -->
+            <div class="absolute top-[35%] left-1/2 -translate-x-1/2 -translate-y-1/2 z-30 text-white/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <svg xmlns="http://www.w3.org/1998/Math/MathML" viewBox="0 0 24 24" fill="currentColor" class="w-16 h-16 drop-shadow-md">
+                  <path fill-rule="evenodd" d="M4.5 5.653c0-1.426 1.529-2.33 2.779-1.643l11.54 6.348c1.295.712 1.295 2.573 0 3.285L7.28 19.991c-1.25.687-2.779-.217-2.779-1.643V5.653z" clip-rule="evenodd" />
+                </svg>
             </div>
 
         </div>
@@ -93,7 +97,7 @@
         </p>
 
     </div>
-    
+
     <!-- ==========================================
          2. CONTENIDO PRINCIPAL (La Invitación)
          ========================================== -->
@@ -102,7 +106,7 @@
     
     <!-- Título -->
     <h1 class="fuente-titulo text-7xl md:text-8xl text-white drop-shadow-[0_0_15px_rgba(255,255,255,0.6)] mb-2">
-        Alma
+        Mailen
     </h1>
     <p class="text-slate-300 tracking-[0.3em] uppercase text-xs md:text-sm mb-8 font-light">
         Mis Quince Años
