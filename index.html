@@ -45,24 +45,55 @@
     <!-- Contenedor del cielo estrellado (Fondo dinámico) -->
     <div id="cielo-estrellado" class="fixed inset-0 pointer-events-none z-0"></div>
     
-    <!-- ==========================================
+        <!-- ==========================================
          1. PANTALLA DE INICIO (El "Sobre" interactivo)
          ========================================== -->
-    <div id="pantalla-sobre" class="fixed inset-0 z-50 flex flex-col items-center justify-center bg-blue-950 transition-all duration-1000">
+    <div id="pantalla-sobre" class="fixed inset-0 z-50 flex flex-col items-center justify-center bg-blue-950/80 backdrop-blur-md transition-all duration-1000">
         
-        <!-- Sello interactivo usando tu SVG Boho Místico -->
-        <div id="boton-abrir" class="cursor-pointer flex flex-col items-center transform transition hover:scale-110">
-            
-            <!-- Llamamos al SVG como imagen y lo volvemos blanco con filtros -->
-<img src="./45008982_9123934.svg" 
-     alt="Sello lunar" 
-     class="w-40 h-40 mb-6 brightness-0 invert drop-shadow-[0_0_15px_rgba(255,255,255,0.8)]">
-
-            
-            <p class="text-slate-300 tracking-[0.2em] text-sm animate-pulse">PRESIONÁ PARA ABRIR</p>
+        <!-- Textos Superiores (Nombre) -->
+        <div class="text-center mb-10">
+            <h1 class="fuente-titulo text-7xl md:text-8xl text-white drop-shadow-[0_0_15px_rgba(255,255,255,0.6)] mb-2">
+                Alma
+            </h1>
+            <p class="text-slate-300 tracking-[0.3em] uppercase text-xs md:text-sm font-light">
+                Mis Quince Años
+            </p>
         </div>
-    </div>
 
+        <!-- El Sobre Interactivo -->
+        <div id="boton-abrir" class="relative w-[280px] h-[180px] md:w-[320px] md:h-[200px] cursor-pointer group hover:-translate-y-2 transition-transform duration-500">
+            
+            <!-- Cuerpo base del sobre (Sombra y contorno) -->
+            <div class="absolute inset-0 bg-[#16213e] rounded-md shadow-[0_15px_40px_rgba(0,0,0,0.6)] border border-white/10 overflow-hidden">
+                
+                <!-- Solapas laterales y base (Simuladas con polígonos CSS) -->
+                <div class="absolute top-0 left-0 w-full h-full bg-[#1b2a4e]" style="clip-path: polygon(0 0, 50% 50%, 0 100%);"></div>
+                <div class="absolute top-0 right-0 w-full h-full bg-[#1b2a4e]" style="clip-path: polygon(100% 0, 50% 50%, 100% 100%);"></div>
+                <div class="absolute bottom-0 left-0 w-full h-full bg-[#1f305c]" style="clip-path: polygon(0 100%, 50% 50%, 100% 100%); z-index: 10;"></div>
+            </div>
+
+            <!-- Solapa superior (La tapa del sobre) -->
+            <div class="absolute top-0 left-0 w-full h-full bg-[#25396d] shadow-2xl" style="clip-path: polygon(0 0, 100% 0, 50% 55%); z-index: 20;"></div>
+
+            <!-- Sello de Cera Plateado -->
+            <div class="absolute top-[55%] left-1/2 -translate-x-1/2 -translate-y-1/2 z-30 transition-transform duration-300 group-hover:scale-110">
+                <!-- Círculo con degradado plateado para simular relieve -->
+                <div class="bg-gradient-to-br from-slate-100 via-slate-300 to-slate-500 rounded-full w-14 h-14 md:w-16 md:h-16 flex items-center justify-center shadow-[0_0_20px_rgba(255,255,255,0.4)] border border-slate-100">
+                    
+                    <!-- SVG de la Luna (Con brillo 0 y opacidad baja para que parezca un grabado oscuro en la chapa plateada) -->
+                    <img src="./45008982_9123934.svg" class="w-8 h-8 md:w-10 md:h-10 brightness-0 opacity-70" alt="Sello lunar">
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Texto Inferior -->
+        <p class="text-slate-300 tracking-[0.2em] text-xs md:text-sm mt-10 animate-pulse font-light uppercase text-center px-4">
+            Presioná el sobre para abrirlo
+        </p>
+
+    </div>
+    
     <!-- ==========================================
          2. CONTENIDO PRINCIPAL (La Invitación)
          ========================================== -->
