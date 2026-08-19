@@ -61,16 +61,28 @@
             <p class="text-slate-300 tracking-[0.3em] uppercase text-xs md:text-sm font-light">Mis Quince Años</p>
         </div>
 
-        <!-- El Sobre Interactivo -->
-        <div id="boton-abrir" class="relative z-10 w-[320px] h-[220px] md:w-[380px] md:h-[260px] cursor-pointer group hover:-translate-y-2 transition-transform duration-500">
-            <div class="absolute inset-0 bg-[#0c142b] shadow-[0_20px_50px_rgba(0,0,0,0.5)]"></div>
-            <div class="absolute inset-0 bg-[#142042]" style="clip-path: polygon(0 0, 0 100%, 100% 100%, 100% 0, 50% 55%); z-index: 10;"></div>
-            <div class="absolute top-0 left-0 w-full h-[65%] bg-[#1a2955]" style="clip-path: polygon(0 0, 100% 0, 50% 100%); z-index: 20;"></div>
+                <!-- El Sobre Interactivo -->
+        <div id="boton-abrir" onclick="abrirInvitacion()" class="relative z-20 w-[320px] h-[220px] md:w-[380px] md:h-[260px] cursor-pointer group hover:-translate-y-2 transition-transform duration-500">
             
-            <!-- Sello SVG Plateado -->
-            <div class="absolute top-[65%] left-1/2 -translate-x-1/2 -translate-y-[60%] z-30 transition-transform duration-300 group-hover:scale-110">
-                <img src="./45008982_9123934.svg" class="w-20 h-20 md:w-24 md:h-24 brightness-0 invert drop-shadow-[0_0_12px_rgba(255,255,255,0.8)]" alt="Sello lunar">
+            <!-- Agregamos un contenedor que ignora los toques internos, forzando el clic en el sobre -->
+            <div class="pointer-events-none">
+                <!-- Cuerpo base del sobre -->
+                <div class="absolute inset-0 bg-[#0c142b] shadow-[0_20px_50px_rgba(0,0,0,0.5)]"></div>
+
+                <!-- Solapa inferior y laterales -->
+                <div class="absolute inset-0 bg-[#142042]" style="clip-path: polygon(0 0, 0 100%, 100% 100%, 100% 0, 50% 55%); z-index: 10;"></div>
+
+                <!-- Solapa superior -->
+                <div class="absolute top-0 left-0 w-full h-[65%] bg-[#1a2955]" style="clip-path: polygon(0 0, 100% 0, 50% 100%); z-index: 20;"></div>
+
+                <!-- Sello SVG Plateado -->
+                <div class="absolute top-[65%] left-1/2 -translate-x-1/2 -translate-y-[60%] z-30 transition-transform duration-300 group-hover:scale-110">
+                    <img src="./45008982_9123934.svg" 
+                         class="w-20 h-20 md:w-24 md:h-24 brightness-0 invert drop-shadow-[0_0_12px_rgba(255,255,255,0.8)] select-none" 
+                         alt="Sello lunar">
+                </div>
             </div>
+
         </div>
 
         <p class="text-slate-300 tracking-[0.2em] text-xs md:text-sm mt-10 animate-pulse font-light uppercase text-center px-4 relative z-10">
@@ -224,34 +236,36 @@
          3. LÓGICA JAVASCRIPT
          ========================================== -->
     <script>
+                // ----------------------------------------------------
+        // Lógica del Sobre Inicial (Blindada)
         // ----------------------------------------------------
-        // Lógica del Sobre Inicial
-        // ----------------------------------------------------
-        const pantallaSobre = document.getElementById('pantalla-sobre');
-        const botonAbrir = document.getElementById('boton-abrir');
-        const contenidoPrincipal = document.getElementById('contenido-principal');
-        const body = document.getElementById('body');
-        const musicaFondo = document.getElementById('musica-fondo');
+        function abrirInvitacion() {
+            const pantallaSobre = document.getElementById('pantalla-sobre');
+            const contenidoPrincipal = document.getElementById('contenido-principal');
+            const body = document.getElementById('body');
+            const musicaFondo = document.getElementById('musica-fondo');
 
-        botonAbrir.addEventListener('click', () => {
-            // Desvanece el sobre
+            // 1. Desvanece el sobre
             pantallaSobre.classList.add('fade-out');
             
             setTimeout(() => {
-                // Oculta el sobre y muestra el contenido principal
+                // 2. Oculta el sobre y muestra el contenido principal
                 pantallaSobre.style.display = 'none';
                 contenidoPrincipal.classList.remove('hidden');
                 
-                // Habilita el scroll
+                // 3. Habilita el scroll
                 body.classList.remove('overflow-hidden');
                 
-                // Aparece suavemente la invitación
+                // 4. Aparece suavemente la invitación
                 setTimeout(() => contenidoPrincipal.classList.remove('opacity-0'), 50);
             }, 800);
 
-            // Intenta reproducir la música (Descomentalo cuando tengas el mp3)
-            // musicaFondo.play().catch(error => console.log("Bloqueado por el navegador", error));
-        });
+            // 5. Intenta reproducir la música si existe
+            if (musicaFondo) {
+                musicaFondo.play().catch(error => console.log("Navegador bloqueó autoplay", error));
+            }
+        }
+        
 
         // ----------------------------------------------------
         // Lógica de la Música (Play / Pausa)
