@@ -178,9 +178,9 @@
             </div>
         </section>
         
-        <!-- SECCIÓN 2: Carrusel Infancia -->
+                <!-- SECCIÓN 2: Carrusel Infancia -->
         <section class="py-12 relative z-10 w-full max-w-md mx-auto">
-            <div class="flex overflow-x-auto snap-x snap-mandatory gap-6 px-6 pb-8 hide-scrollbar">
+            <div id="carrusel-infancia" class="flex overflow-x-auto snap-x snap-mandatory gap-6 px-6 pb-8 hide-scrollbar scroll-smooth">
                 <div class="snap-center shrink-0 w-[85%] aspect-[3/4] bg-white/5 backdrop-blur-sm p-3 rounded-2xl border border-white/10 shadow-[0_0_20px_rgba(0,0,0,0.5)]">
                     <div class="w-full h-full bg-slate-800 rounded-xl overflow-hidden relative">
                         <img src="https://via.placeholder.com/400x500/1e293b/ffffff?text=Foto+Infancia+1" class="w-full h-full object-cover opacity-80" alt="Foto Mailén">
@@ -197,17 +197,14 @@
                     </div>
                 </div>
             </div>
-                        <!-- Indicadores estilo Luna -->
-            <div class="flex justify-center items-center gap-3 mt-4">
-                <!-- Luna activa (opacidad 100 y más grande) -->
+            <!-- Indicadores estilo Luna -->
+            <div id="lunas-infancia" class="flex justify-center items-center gap-3 mt-4">
                 <img src="./45008982_9123934.svg" class="w-4 h-4 brightness-0 invert drop-shadow-[0_0_5px_rgba(255,255,255,0.8)]" alt="luna">
-                <!-- Luna inactiva (opacidad 40 y más chica) -->
                 <img src="./45008982_9123934.svg" class="w-3 h-3 brightness-0 invert opacity-40" alt="luna">
-                <!-- Luna inactiva -->
                 <img src="./45008982_9123934.svg" class="w-3 h-3 brightness-0 invert opacity-40" alt="luna">
             </div>
-
         </section>
+
 
         <!-- SECCIÓN 3: Tarjetas de Información (Agrupadas) -->
         <section class="py-10 relative z-10 flex flex-col items-center gap-8 px-6 w-full max-w-md mx-auto">
@@ -304,10 +301,10 @@
 
         </section>
 
-        <!-- SECCIÓN 4: Carrusel Mi Book -->
+                <!-- SECCIÓN 4: Carrusel Mi Book -->
         <section class="py-12 relative z-10 w-full max-w-md mx-auto">
             <h2 class="fuente-titulo text-5xl text-white text-center mb-8 tracking-wide drop-shadow-md">Mi Book</h2>
-            <div class="flex overflow-x-auto snap-x snap-mandatory gap-6 px-6 pb-8 hide-scrollbar">
+            <div id="carrusel-book" class="flex overflow-x-auto snap-x snap-mandatory gap-6 px-6 pb-8 hide-scrollbar scroll-smooth">
                 <div class="snap-center shrink-0 w-[85%] bg-white/10 backdrop-blur-md p-3 pb-12 rounded-xl border border-white/20 shadow-[0_15px_30px_rgba(0,0,0,0.6)] transform -rotate-2">
                     <div class="w-full aspect-[3/4] bg-slate-800 rounded-md overflow-hidden">
                         <img src="https://via.placeholder.com/400x500/1e293b/ffffff?text=Foto+Actual+1" class="w-full h-full object-cover" alt="Foto Book">
@@ -319,7 +316,13 @@
                     </div>
                 </div>
             </div>
+            <!-- Indicadores estilo Luna -->
+            <div id="lunas-book" class="flex justify-center items-center gap-3 mt-4">
+                <img src="./45008982_9123934.svg" class="w-4 h-4 brightness-0 invert drop-shadow-[0_0_5px_rgba(255,255,255,0.8)]" alt="luna">
+                <img src="./45008982_9123934.svg" class="w-3 h-3 brightness-0 invert opacity-40" alt="luna">
+            </div>
         </section>
+
             
         <!-- SECCIÓN 5: Confirmación de Asistencia (RSVP) -->
         <section class="py-10 relative z-10 w-full max-w-md mx-auto px-6 text-center">
@@ -467,6 +470,58 @@
             elemento.classList.add('revelar');
             observador.observe(elemento);
         });
+                // ----------------------------------------------------
+        // Lógica de los Carruseles (Auto-Play e Indicadores)
+        // ----------------------------------------------------
+        function activarCarrusel(idCarrusel, idLunas) {
+            const carrusel = document.getElementById(idCarrusel);
+            const contenedorLunas = document.getElementById(idLunas);
+            if (!carrusel || !contenedorLunas) return;
+
+            const fotos = carrusel.children;
+            const lunas = contenedorLunas.children;
+            let indexVisible = 0;
+
+            // Vigía para saber qué foto está centrada en la pantalla
+            const observadorFotos = new IntersectionObserver((entradas) => {
+                entradas.forEach(entrada => {
+                    if (entrada.isIntersecting) {
+                        indexVisible = Array.from(fotos).indexOf(entrada.target);
+                        
+                        // Actualizar qué luna brilla
+                        for (let i = 0; i < lunas.length; i++) {
+                            if (i === indexVisible) {
+                                // Luna activa (Grande y brillante)
+                                lunas[i].className = "w-4 h-4 brightness-0 invert drop-shadow-[0_0_5px_rgba(255,255,255,0.8)] transition-all duration-300";
+                            } else {
+                                // Luna inactiva (Chica y opaca)
+                                lunas[i].className = "w-3 h-3 brightness-0 invert opacity-40 transition-all duration-300";
+                            }
+                        }
+                    }
+                });
+            }, {
+                root: carrusel,
+                threshold: 0.6 // Salta cuando el 60% de la foto ya se ve
+            });
+
+            // Ponemos a vigilar cada foto
+            Array.from(fotos).forEach(foto => observadorFotos.observe(foto));
+
+            // Auto-Play: Pasa de foto automáticamente
+            setInterval(() => {
+                indexVisible++;
+                if (indexVisible >= fotos.length) {
+                    indexVisible = 0; // Vuelve a la primera foto al terminar
+                }
+                // Desliza suavemente a la foto que toca
+                fotos[indexVisible].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+            }, 3500); // Cambia cada 3.5 segundos
+        }
+
+        // Encendemos los dos carruseles
+        activarCarrusel('carrusel-infancia', 'lunas-infancia');
+        activarCarrusel('carrusel-book', 'lunas-book');
         
     </script>
 </body>
