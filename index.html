@@ -281,22 +281,34 @@
          3. LÓGICA JAVASCRIPT
          ========================================== -->
     <script>
-        // Lógica del Sobre
+                // ----------------------------------------------------
+        // Lógica del Sobre Inicial (Animación Fluida)
+        // ----------------------------------------------------
         function abrirInvitacion() {
             const pantallaSobre = document.getElementById('pantalla-sobre');
             const contenidoPrincipal = document.getElementById('contenido-principal');
             const body = document.getElementById('body');
             const musicaFondo = document.getElementById('musica-fondo');
 
-            pantallaSobre.classList.add('fade-out');
+            // 1. Animación del sobre: Lo subimos como un telón y lo desvanecemos
+            pantallaSobre.style.transform = 'translateY(-100vh)';
+            pantallaSobre.style.opacity = '0';
             
+            // 2. Preparamos la invitación (le quitamos el hidden para que el navegador dibuje todo en segundo plano sin pantallazos)
+            contenidoPrincipal.classList.remove('hidden');
+            
+            // 3. Efecto Fade-in cruzado: esperamos un instante y hacemos que la invitación aparezca suavemente mientras el sobre sube
+            setTimeout(() => {
+                contenidoPrincipal.classList.remove('opacity-0');
+            }, 300);
+
+            // 4. Limpieza final: ocultamos el div del sobre por completo y habilitamos el scroll
             setTimeout(() => {
                 pantallaSobre.style.display = 'none';
-                contenidoPrincipal.classList.remove('hidden');
                 body.classList.remove('overflow-hidden');
-                setTimeout(() => contenidoPrincipal.classList.remove('opacity-0'), 50);
-            }, 800);
+            }, 1000);
 
+            // 5. Música
             if (musicaFondo) {
                 musicaFondo.play().catch(error => console.log("Navegador bloqueó autoplay", error));
             }
