@@ -57,31 +57,61 @@
     <!-- ==========================================
          2. CONTENIDO PRINCIPAL (La Invitación)
          ========================================== -->
-    <main id="contenido-principal" class="h-screen overflow-y-auto bg-gradient-to-b from-blue-950 via-[#16213e] to-blue-950 hidden opacity-0 transition-opacity duration-1000">
-        
-        <!-- Sección Hero (Nombre y música) -->
-        <section class="min-h-screen flex flex-col items-center justify-center relative px-4 text-center">
-            
-            <h1 class="fuente-titulo text-7xl md:text-8xl text-white drop-shadow-lg mb-2">
-                Alma
-            </h1>
-            <p class="text-slate-300 tracking-[0.3em] uppercase text-sm mb-12">
-                Mis Quince Años
-            </p>
-            
-            <!-- Reproductor de Audio -->
-            <audio id="musica-fondo" loop>
-                <!-- Cuando tengas el mp3, descomentá esta línea y poné la ruta -->
-                <!-- <source src="tu-cancion.mp3" type="audio/mpeg"> -->
-            </audio>
+<!-- Sección Hero (Nombre, música y cuenta regresiva) -->
+<section class="min-h-screen flex flex-col items-center justify-center relative px-6 text-center py-20">
+    
+    <!-- Título -->
+    <h1 class="fuente-titulo text-7xl md:text-8xl text-white drop-shadow-[0_0_15px_rgba(255,255,255,0.6)] mb-2">
+        Alma
+    </h1>
+    <p class="text-slate-300 tracking-[0.3em] uppercase text-xs md:text-sm mb-8 font-light">
+        Mis Quince Años
+    </p>
 
-            <!-- Acá irán los controles de play/pausa después -->
+    <!-- Reproductor de Audio Visual -->
+    <div class="flex items-center gap-3 mb-10 bg-white/5 border border-white/10 backdrop-blur-sm px-4 py-2 rounded-full shadow-lg">
+        <button id="btn-musica" class="text-slate-200 hover:text-white transition transform hover:scale-110">
+            <!-- Ícono de Pausa inicial (porque asume que arranca sola al abrir) -->
+            <svg id="icono-musica" xmlns="http://www.w3.org/1998/Math/MathML" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
+                <path d="M8 5v14l11-7z" id="path-play" class="hidden"/>
+                <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z" id="path-pausa"/>
+            </svg>
+        </button>
+        <span class="text-slate-300 text-xs tracking-widest uppercase">Every Breath You Take</span>
+    </div>
 
-        </section>
+    <!-- Texto Introductorio -->
+    <p class="text-slate-200 text-sm md:text-base leading-relaxed max-w-md mx-auto mb-12 font-light">
+        "Hay días que se vuelven inolvidables, momentos que queremos guardar para siempre y personas que hacen nuestra vida más especial. Por eso quiero que estén conmigo en esta noche tan importante..."
+    </p>
 
-        <!-- Acá abajo vamos a ir agregando las otras secciones (Fotos, Cuenta Regresiva, etc.) -->
+    <!-- Acá podés usar la otra Luna Geométrica que me mostraste como separador -->
+     <img src="./13728465_22_april_2.svg" class="w-20 h-20 mb-12 brightness-0 invert opacity-50">
 
-    </main>
+    <!-- Título Cuenta Regresiva -->
+    <h2 class="fuente-titulo text-4xl text-white mb-6 tracking-wide drop-shadow-md">Faltan</h2>
+
+    <!-- Contenedor Cuenta Regresiva (Efecto Cristal) -->
+    <div class="grid grid-cols-4 gap-3 md:gap-6 w-full max-w-lg">
+        <div class="bg-white/10 backdrop-blur-md border border-white/20 rounded-xl py-3 flex flex-col items-center justify-center shadow-[0_0_15px_rgba(255,255,255,0.1)]">
+            <span id="dias" class="text-2xl md:text-4xl text-white font-semibold">00</span>
+            <span class="text-[10px] md:text-xs text-slate-300 tracking-widest uppercase mt-1">Días</span>
+        </div>
+        <div class="bg-white/10 backdrop-blur-md border border-white/20 rounded-xl py-3 flex flex-col items-center justify-center shadow-[0_0_15px_rgba(255,255,255,0.1)]">
+            <span id="horas" class="text-2xl md:text-4xl text-white font-semibold">00</span>
+            <span class="text-[10px] md:text-xs text-slate-300 tracking-widest uppercase mt-1">Hs</span>
+        </div>
+        <div class="bg-white/10 backdrop-blur-md border border-white/20 rounded-xl py-3 flex flex-col items-center justify-center shadow-[0_0_15px_rgba(255,255,255,0.1)]">
+            <span id="minutos" class="text-2xl md:text-4xl text-white font-semibold">00</span>
+            <span class="text-[10px] md:text-xs text-slate-300 tracking-widest uppercase mt-1">Min</span>
+        </div>
+        <div class="bg-white/10 backdrop-blur-md border border-white/20 rounded-xl py-3 flex flex-col items-center justify-center shadow-[0_0_15px_rgba(255,255,255,0.1)]">
+            <span id="segundos" class="text-2xl md:text-4xl text-white font-semibold">00</span>
+            <span class="text-[10px] md:text-xs text-slate-300 tracking-widest uppercase mt-1">Seg</span>
+        </div>
+    </div>
+</section>
+    
 
     <!-- ==========================================
          3. LÓGICA JAVASCRIPT
@@ -111,6 +141,59 @@
 
             // 3. Reproducimos la música (Descomentalo cuando pongas el archivo de audio)
             // musicaFondo.play().catch(error => console.log("El navegador bloqueó el autoplay", error));
+            // ==========================================
+// LÓGICA DE LA MÚSICA
+// ==========================================
+const btnMusica = document.getElementById('btn-musica');
+const pathPlay = document.getElementById('path-play');
+const pathPausa = document.getElementById('path-pausa');
+let reproduciendo = true; // Asumimos que arranca al abrir el sobre
+
+btnMusica.addEventListener('click', () => {
+    if (reproduciendo) {
+        // musicaFondo.pause(); // Descomentar cuando tengas el audio
+        pathPausa.classList.add('hidden');
+        pathPlay.classList.remove('hidden');
+    } else {
+        // musicaFondo.play(); // Descomentar cuando tengas el audio
+        pathPlay.classList.add('hidden');
+        pathPausa.classList.remove('hidden');
+    }
+    reproduciendo = !reproduciendo;
+});
+
+// ==========================================
+// LÓGICA DE LA CUENTA REGRESIVA
+// ==========================================
+// Poné acá la fecha de la fiesta (Año, Mes en inglés, Día, Hora)
+const fechaFiesta = new Date("December 12, 2026 21:00:00").getTime();
+
+const actualizarReloj = setInterval(function() {
+    const ahora = new Date().getTime();
+    const distancia = fechaFiesta - ahora;
+
+    // Cálculos matemáticos para días, horas, minutos y segundos
+    const dias = Math.floor(distancia / (1000 * 60 * 60 * 24));
+    const horas = Math.floor((distancia % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutos = Math.floor((distancia % (1000 * 60 * 60)) / (1000 * 60));
+    const segundos = Math.floor((distancia % (1000 * 60)) / 1000);
+
+    // Inyectamos los números en el HTML (con padStart para que siempre tengan 2 dígitos, ej: "09")
+    document.getElementById("dias").innerText = String(dias).padStart(2, '0');
+    document.getElementById("horas").innerText = String(horas).padStart(2, '0');
+    document.getElementById("minutos").innerText = String(minutos).padStart(2, '0');
+    document.getElementById("segundos").innerText = String(segundos).padStart(2, '0');
+
+    // Si la fecha ya pasó, detenemos el reloj
+    if (distancia < 0) {
+        clearInterval(actualizarReloj);
+        document.getElementById("dias").innerText = "00";
+        document.getElementById("horas").innerText = "00";
+        document.getElementById("minutos").innerText = "00";
+        document.getElementById("segundos").innerText = "00";
+    }
+}, 1000); // Se actualiza cada 1 segundo
+            
         });
     </script>
 </body>
