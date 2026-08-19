@@ -39,6 +39,16 @@
             -webkit-user-select: none;
             user-select: none;
         }
+                /* Efecto de aparición al hacer scroll */
+        .revelar {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease-out;
+        }
+        .revelar.activa {
+            opacity: 1;
+            transform: translateY(0);
+        }
         
     </style>
 </head>
@@ -229,7 +239,95 @@
         
         <!-- Espacio extra al final para que se pueda scrollear bien -->
         <div class="h-32"></div>
+                        <!-- Tarjeta: Playlist -->
+            <div class="bg-gradient-to-b from-white/10 to-white/5 backdrop-blur-md border border-white/20 rounded-3xl p-8 w-full max-w-md text-center shadow-[0_10px_30px_rgba(0,0,0,0.5)] relative overflow-hidden">
+                <div class="absolute -top-10 -left-10 w-32 h-32 bg-purple-400/20 rounded-full blur-2xl"></div>
 
+                <div class="flex justify-center mb-4 text-slate-200 drop-shadow-[0_0_8px_rgba(255,255,255,0.5)]">
+                    <!-- Icono de Notas Musicales -->
+                    <svg xmlns="http://www.w3.org/1998/Math/MathML" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-10 h-10">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="m9 9 10.5-3m0 6.553v3.75a2.25 2.25 0 0 1-1.632 2.163l-1.32.377a1.803 1.803 0 1 1-.99-3.467l2.31-.66a2.25 2.25 0 0 0 1.632-2.163Zm0 0V2.25L9 5.25v10.303m0 0v3.75a2.25 2.25 0 0 1-1.632 2.163l-1.32.377a1.803 1.803 0 0 1-.99-3.467l2.31-.66A2.25 2.25 0 0 0 9 15.553Z" />
+                    </svg>
+                </div>
+                
+                <h3 class="fuente-titulo text-4xl text-white mb-2 tracking-wide drop-shadow-md">Playlist</h3>
+                <p class="text-slate-300 font-light text-sm leading-relaxed mb-6">
+                    ¿Qué canción no puede faltar en la fiesta? ¡Ayudame a armar la mejor playlist de la noche!
+                </p>
+                
+                <!-- Botón de recomendación -->
+                <a href="https://wa.me/5491100000000?text=¡Hola!%20Para%20la%20playlist%20de%20tus%2015,%20sugiero%20la%20canción:%20" target="_blank" class="inline-block bg-slate-200 text-[#0c142b] px-8 py-3 rounded-full font-bold text-xs tracking-[0.2em] uppercase hover:bg-white hover:scale-105 hover:shadow-[0_0_20px_rgba(255,255,255,0.6)] transition-all duration-300">
+                    Recomendar Canción
+                </a>
+            </div>
+            <!-- Tarjeta: Regalos -->
+            <div class="bg-gradient-to-b from-white/10 to-white/5 backdrop-blur-sm border border-white/20 rounded-3xl p-8 w-full max-w-md text-center shadow-[0_10px_30px_rgba(0,0,0,0.5)] relative overflow-hidden mt-2">
+                
+                <div class="flex justify-center mb-4 text-slate-200 drop-shadow-[0_0_8px_rgba(255,255,255,0.5)]">
+                    <!-- Icono de Regalo -->
+                    <svg xmlns="http://www.w3.org/1998/Math/MathML" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-10 h-10">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M21 11.25v8.25a1.5 1.5 0 0 1-1.5 1.5H5.25a1.5 1.5 0 0 1-1.5-1.5v-8.25M12 4.875A2.625 2.625 0 1 0 9.375 7.5H12m0-2.625V7.5m0-2.625A2.625 2.625 0 1 1 14.625 7.5H12m0 0V21m-8.625-9.75h18c.621 0 1.125-.504 1.125-1.125v-1.5c0-.621-.504-1.125-1.125-1.125h-18c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125Z" />
+                    </svg>
+                </div>
+                
+                <h3 class="fuente-titulo text-4xl text-white mb-2 tracking-wide drop-shadow-md">Regalos</h3>
+                <p class="text-slate-300 font-light text-sm leading-relaxed mb-6">
+                    El mejor regalo es que compartas esta noche conmigo. Si deseás hacerme un presente, podés ayudarme con mi viaje a través de una transferencia:
+                </p>
+                
+                <!-- Caja del Alias -->
+                <div class="bg-[#0c142b]/50 rounded-xl p-4 border border-white/10">
+                    <p class="text-xs text-slate-400 uppercase tracking-widest mb-1">Alias / CBU</p>
+                    <p class="text-lg text-white font-semibold tracking-wider">mailen.mis15</p>
+                </div>
+            </div>
+        </section> <!-- Asegurate de que cierre la sección anterior -->
+
+        <!-- ==========================================
+             SECCIÓN 4: CARRUSEL DE FOTOS ACTUALES
+             ========================================== -->
+        <section class="py-12 relative z-10 w-full max-w-md mx-auto">
+            <h2 class="fuente-titulo text-5xl text-white text-center mb-8 tracking-wide drop-shadow-md">Mi Book</h2>
+            
+            <div class="flex overflow-x-auto snap-x snap-mandatory gap-6 px-6 pb-8 hide-scrollbar">
+                
+                <!-- Foto 1 (Estilo Polaroid) -->
+                <div class="snap-center shrink-0 w-[85%] bg-white/10 backdrop-blur-md p-3 pb-12 rounded-xl border border-white/20 shadow-[0_15px_30px_rgba(0,0,0,0.6)] transform -rotate-2">
+                    <div class="w-full aspect-[3/4] bg-slate-800 rounded-md overflow-hidden">
+                        <img src="https://via.placeholder.com/400x500/1e293b/ffffff?text=Foto+Actual+1" class="w-full h-full object-cover" alt="Foto Book 1">
+                    </div>
+                </div>
+
+                <!-- Foto 2 (Estilo Polaroid) -->
+                <div class="snap-center shrink-0 w-[85%] bg-white/10 backdrop-blur-md p-3 pb-12 rounded-xl border border-white/20 shadow-[0_15px_30px_rgba(0,0,0,0.6)] transform rotate-2">
+                    <div class="w-full aspect-[3/4] bg-slate-800 rounded-md overflow-hidden">
+                        <img src="https://via.placeholder.com/400x500/1e293b/ffffff?text=Foto+Actual+2" class="w-full h-full object-cover" alt="Foto Book 2">
+                    </div>
+                </div>
+
+            </div>
+        </section>
+            
+            <!-- Confirmación de Asistencia (RSVP) -->
+            <div class="mt-10 text-center w-full max-w-md">
+                <h3 class="fuente-titulo text-5xl text-white mb-4 tracking-wide drop-shadow-md">Asistencia</h3>
+                <p class="text-slate-300 font-light text-sm leading-relaxed mb-8">
+                    Por favor, confirmá tu asistencia antes del 10 de Noviembre para poder organizarnos mejor.
+                </p>
+                
+                <!-- Botón de WhatsApp -->
+                <a href="https://wa.me/5491100000000?text=¡Hola!%20Confirmo%20mi%20asistencia%20a%20los%2015%20de%20Mailén%20✨" target="_blank" class="inline-block bg-slate-200 text-[#0c142b] px-10 py-4 rounded-full font-bold text-sm tracking-[0.2em] uppercase hover:bg-white hover:scale-105 hover:shadow-[0_0_20px_rgba(255,255,255,0.6)] transition-all duration-300 w-full">
+                    Confirmar por WhatsApp
+                </a>
+            </div>
+
+            <!-- Footer / Créditos de tu agencia -->
+            <footer class="mt-20 pt-8 border-t border-white/10 w-full text-center">
+                <p class="text-slate-400 text-[10px] font-light tracking-[0.3em] uppercase">
+                    Diseñado con <span class="text-slate-200">✨</span> por Tecno Lab Sur
+                </p>
+            </footer>
+            
     </main>
 
     <!-- ==========================================
@@ -347,6 +445,33 @@
 
         // Ejecutamos la función para que aparezcan las estrellas
         crearEstrellas();
+                // ----------------------------------------------------
+        // Lógica de Animación al Scrollear (Fade-in)
+        // ----------------------------------------------------
+        // Como nuestro contenedor principal es el que hace scroll, 
+        // le decimos al "vigía" que mire dentro de él.
+        const contenedorScroll = document.getElementById('contenido-principal');
+        
+        const observador = new IntersectionObserver((entradas) => {
+            entradas.forEach(entrada => {
+                if (entrada.isIntersecting) {
+                    // Cuando la tarjeta entra en pantalla, le agregamos la clase que la hace visible
+                    entrada.target.classList.add('activa');
+                }
+            });
+        }, {
+            root: contenedorScroll,
+            threshold: 0.15 // La animación salta cuando el 15% de la tarjeta ya se asomó
+        });
+
+        // Buscamos todas las tarjetas de información, el carrusel y el pie de página.
+        // Omitimos la primera sección porque esa ya aparece sola al abrir el sobre.
+        const elementosAAnimar = document.querySelectorAll('section:not(:first-of-type), .bg-gradient-to-b, .mt-10, footer');
+        
+        elementosAAnimar.forEach(elemento => {
+            elemento.classList.add('revelar'); // Los oculta al principio
+            observador.observe(elemento);      // Los empieza a vigilar
+        });
         
     </script>
 </body>
