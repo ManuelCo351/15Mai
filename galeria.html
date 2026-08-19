@@ -58,7 +58,7 @@
         </div>
 
         <!-- Botón de Videos -->
-        <a href="https://drive.google.com/drive/folders/15gOtiz7acDxaFt1NUMp8Gdazkbyo4h_U?usp=drive_link" target="_blank" class="inline-block border border-white/30 text-white px-8 py-3 rounded-full font-bold text-xs tracking-[0.2em] uppercase hover:bg-white/10 transition-all mb-8">
+        <a href="https://drive.google.com/drive/folders/13aDqBUtRE422WVGnDVquzzWW-iohIXyn?hl=es-419" target="_blank" class="inline-block border border-white/30 text-white px-8 py-3 rounded-full font-bold text-xs tracking-[0.2em] uppercase hover:bg-white/10 transition-all mb-8">
             Subir Video al Drive
         </a>
 
@@ -66,19 +66,22 @@
         <div id="statusMessage" class="h-6 text-sm tracking-widest uppercase font-bold mb-10 transition-all"></div>
 
         <!-- Ver Álbum Completo -->
-        <a href="https://drive.google.com/drive/folders/1wNCv9PM1fcQ3LrXnd_qrUZHRTg0EF8yE?usp=drive_link" target="_blank" class="inline-block mt-10 text-slate-300 border-b border-slate-500 pb-1 hover:text-white transition-all text-sm tracking-widest uppercase">
+        <a href="https://drive.google.com/drive/folders/1DOzhPT1UGatoHNyz1zVyMt5TgYmggeQ_?hl=es-419" target="_blank" class="inline-block mt-10 text-slate-300 border-b border-slate-500 pb-1 hover:text-white transition-all text-sm tracking-widest uppercase">
             Ver Álbum Completo en Drive
         </a>
     </main>
 
     <!-- Tu script exacto para la subida -->
+        <!-- Tu script exacto para la subida YA CONFIGURADO -->
     <script>
-        const URL_API = "https://script.google.com/macros/s/AKfycbz1QEnH2YDDwxUeq1uL7q4MN9kFODKDBd3gZYl3CLahLPMR6Cb63UpRq4RvmTMQgcNK/exec"; 
+        // Tu nueva URL del puente de Google (App Script)
+        const URL_API = "https://script.google.com/macros/s/AKfycbxX96V0aLY3uVVhMCeHbMTh0pTnVbTQJCQTWFUUGE2siRIE0cDmPQIAoQh9e7uTvDQl/exec"; 
 
+        // Los IDs extraídos de tus links de Drive
         const ids = {
-            CIVIL:   "1nEqaOv0HC2U2yR0Ie4Xj6DXHJ6VYqsCd",
-            FIESTA:  "1xWzZCLCfG5CRMAa14UhAdWeqdS7jiCOd",
-            SELFIES: "1sOUxzILx0B_Ncdrxf7z1kepJKV5CWPad", 
+            CIVIL:   "1ok-6AqlCdpnx-ClpZ1bRELVJr-xPXUmE", // Carpeta: La Previa
+            FIESTA:  "1JvpU4k-bbkWutBIXGMqV7xO5txNCilep", // Carpeta: La Fiesta
+            SELFIES: "1AybIvdp9AK9Mnd3rwGh4kZwEiFv4-u9T", // Carpeta: Selfies
         };
 
         function activarInput(idInput) { document.getElementById(idInput).click(); }
@@ -120,5 +123,6 @@
             if(tipo !== 'exito') setTimeout(() => { box.innerText = ""; }, 5000);
         }
     </script>
+
 </body>
 </html>
