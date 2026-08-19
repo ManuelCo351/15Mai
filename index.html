@@ -32,10 +32,19 @@
             mask-repeat: no-repeat;
             mask-position: center;
         }
+                /* Animación para que las estrellas brillen */
+        @keyframes titilar {
+            0% { opacity: 0.1; transform: scale(0.8); }
+            50% { opacity: 1; transform: scale(1.2); box-shadow: 0 0 8px rgba(255,255,255,0.8); }
+            100% { opacity: 0.1; transform: scale(0.8); }
+        }
+        
     </style>
 </head>
 <body class="bg-blue-950 fuente-texto overflow-hidden" id="body">
-
+    <!-- Contenedor del cielo estrellado (Fondo dinámico) -->
+    <div id="cielo-estrellado" class="fixed inset-0 pointer-events-none z-0"></div>
+    
     <!-- ==========================================
          1. PANTALLA DE INICIO (El "Sobre" interactivo)
          ========================================== -->
