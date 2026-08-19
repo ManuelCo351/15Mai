@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mis 15 - Alma</title>
+  <!-- Script de Tailwind para prototipar rápido -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Fuente cursiva elegante de Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+  
+  <style>
+    .fuente-titulo { font-family: 'Great Vibes', cursive; }
+  </style>
+</head>
+<body class="bg-[#0B1021]">
+
+  <!-- Contenedor Principal (Cielo nocturno) -->
+  <main class="min-h-screen bg-gradient-to-b from-[#0B1021] via-[#1B2745] to-[#0B1021] flex flex-col items-center justify-center relative overflow-hidden px-4">
+
+    <!-- Ejemplo de cómo ubicar estrellitas de fondo animadas -->
+    <div class="absolute top-16 left-12 w-8 h-8 text-white/60 animate-pulse">
+      <!-- Acá pegás el código <svg> de una estrellita boho -->
+    </div>
+    
+    <div class="absolute bottom-32 right-10 w-12 h-12 text-slate-300 animate-pulse delay-700">
+      <!-- Acá pegás otro <svg> de estrella -->
+    </div>
+
+    <!-- Contenedor de la Luna Principal Mística -->
+    <!-- El drop-shadow crea el efecto de que la luna brilla en la oscuridad -->
+    <div class="w-48 h-48 mb-6 text-slate-200 drop-shadow-[0_0_15px_rgba(255,255,255,0.3)]">
+        <!-- IMPORTANTE: Cuando pegues tu SVG de la luna acá, asegurate de que las etiquetas <path> 
+             adentro del SVG tengan el atributo fill="currentColor". 
+             Así toman automáticamente el color "text-slate-200" que le dimos arriba. -->
+        <svg viewBox="0 0 24 24" fill="currentColor">
+           <!-- Código interno del SVG de Freepik/SVG Repo -->
+        </svg>
+    </div>
+
+    <!-- Textos Principales -->
+    <h1 class="fuente-titulo text-6xl md:text-7xl text-white font-normal text-center drop-shadow-md">
+      Alma
+    </h1>
+    <p class="text-slate-300 mt-4 text-sm font-light tracking-[0.3em] uppercase text-center">
+      Mis Quince Años
+    </p>
+
+  </main>
+
+</body>
+</html>
