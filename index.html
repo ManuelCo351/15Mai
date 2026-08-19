@@ -32,6 +32,13 @@
         /* Ocultar barra de scroll en el carrusel pero permitir deslizamiento */
         .hide-scrollbar::-webkit-scrollbar { display: none; }
         .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+                /* Previene que los móviles intenten seleccionar la imagen al tocar */
+        .no-select {
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            user-select: none;
+        }
+        
     </style>
 </head>
 <body class="bg-blue-950 fuente-texto overflow-hidden" id="body">
@@ -40,9 +47,12 @@
     <div id="cielo-estrellado" class="fixed inset-0 pointer-events-none z-0"></div>
     
     <!-- ==========================================
+
+    <!-- ==========================================
          1. PANTALLA DE INICIO (El "Sobre" interactivo)
          ========================================== -->
-    <div id="pantalla-sobre" class="fixed inset-0 z-50 flex flex-col items-center justify-center bg-blue-950/80 backdrop-blur-md transition-all duration-1000 overflow-hidden">
+    <!-- Le pusimos el onclick a TODA la pantalla azul, y la clase no-select -->
+    <div id="pantalla-sobre" onclick="abrirInvitacion()" class="fixed inset-0 z-50 flex flex-col items-center justify-center bg-blue-950/80 backdrop-blur-md transition-all duration-1000 overflow-hidden cursor-pointer no-select">
         
         <!-- Detalles en las esquinas -->
         <img src="./13728465_22_april_2.svg" class="absolute -top-16 -left-16 w-64 h-64 md:w-80 md:h-80 brightness-0 invert opacity-[0.12] -rotate-12 pointer-events-none" alt="decoración">
@@ -56,37 +66,25 @@
         </div>
 
         <!-- Textos Superiores -->
-        <div class="text-center mb-8 relative z-10">
+        <div class="text-center mb-8 relative z-10 pointer-events-none">
             <h1 class="fuente-titulo text-7xl md:text-8xl text-white drop-shadow-[0_0_15px_rgba(255,255,255,0.6)] mb-2">Mailén</h1>
             <p class="text-slate-300 tracking-[0.3em] uppercase text-xs md:text-sm font-light">Mis Quince Años</p>
         </div>
 
-                <!-- El Sobre Interactivo -->
-        <div id="boton-abrir" onclick="abrirInvitacion()" class="relative z-20 w-[320px] h-[220px] md:w-[380px] md:h-[260px] cursor-pointer group hover:-translate-y-2 transition-transform duration-500">
+        <!-- El Sobre Interactivo -->
+        <div id="boton-abrir" class="relative z-10 w-[320px] h-[220px] md:w-[380px] md:h-[260px] group hover:-translate-y-2 transition-transform duration-500 pointer-events-none">
+            <div class="absolute inset-0 bg-[#0c142b] shadow-[0_20px_50px_rgba(0,0,0,0.5)]"></div>
+            <div class="absolute inset-0 bg-[#142042]" style="clip-path: polygon(0 0, 0 100%, 100% 100%, 100% 0, 50% 55%); z-index: 10;"></div>
+            <div class="absolute top-0 left-0 w-full h-[65%] bg-[#1a2955]" style="clip-path: polygon(0 0, 100% 0, 50% 100%); z-index: 20;"></div>
             
-            <!-- Agregamos un contenedor que ignora los toques internos, forzando el clic en el sobre -->
-            <div class="pointer-events-none">
-                <!-- Cuerpo base del sobre -->
-                <div class="absolute inset-0 bg-[#0c142b] shadow-[0_20px_50px_rgba(0,0,0,0.5)]"></div>
-
-                <!-- Solapa inferior y laterales -->
-                <div class="absolute inset-0 bg-[#142042]" style="clip-path: polygon(0 0, 0 100%, 100% 100%, 100% 0, 50% 55%); z-index: 10;"></div>
-
-                <!-- Solapa superior -->
-                <div class="absolute top-0 left-0 w-full h-[65%] bg-[#1a2955]" style="clip-path: polygon(0 0, 100% 0, 50% 100%); z-index: 20;"></div>
-
-                <!-- Sello SVG Plateado -->
-                <div class="absolute top-[65%] left-1/2 -translate-x-1/2 -translate-y-[60%] z-30 transition-transform duration-300 group-hover:scale-110">
-                    <img src="./45008982_9123934.svg" 
-                         class="w-20 h-20 md:w-24 md:h-24 brightness-0 invert drop-shadow-[0_0_12px_rgba(255,255,255,0.8)] select-none" 
-                         alt="Sello lunar">
-                </div>
+            <!-- Sello SVG Plateado -->
+            <div class="absolute top-[65%] left-1/2 -translate-x-1/2 -translate-y-[60%] z-30 transition-transform duration-300 group-hover:scale-110">
+                <img src="./45008982_9123934.svg" class="w-20 h-20 md:w-24 md:h-24 brightness-0 invert drop-shadow-[0_0_12px_rgba(255,255,255,0.8)] pointer-events-none" alt="Sello lunar">
             </div>
-
         </div>
 
-        <p class="text-slate-300 tracking-[0.2em] text-xs md:text-sm mt-10 animate-pulse font-light uppercase text-center px-4 relative z-10">
-            Presioná el sobre para abrirlo
+        <p class="text-slate-300 tracking-[0.2em] text-xs md:text-sm mt-10 animate-pulse font-light uppercase text-center px-4 relative z-10 pointer-events-none">
+            Presioná la pantalla para abrir
         </p>
     </div>
 
