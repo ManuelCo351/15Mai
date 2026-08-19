@@ -204,6 +204,43 @@ const actualizarReloj = setInterval(function() {
 }, 1000); // Se actualiza cada 1 segundo
             
         });
+        // ==========================================
+// LÓGICA DEL CIELO ESTRELLADO
+// ==========================================
+function crearEstrellas() {
+    const cielo = document.getElementById('cielo-estrellado');
+    const cantidadEstrellas = 70; // Podés subir o bajar este número si querés más o menos estrellas
+
+    for (let i = 0; i < cantidadEstrellas; i++) {
+        const estrella = document.createElement('div');
+        
+        // Clases base de Tailwind para la estrella
+        estrella.classList.add('absolute', 'bg-white', 'rounded-full');
+
+        // Tamaño aleatorio (entre 1px y 3px para que parezcan lejanas y cercanas)
+        const size = Math.random() * 2 + 1;
+        estrella.style.width = `${size}px`;
+        estrella.style.height = `${size}px`;
+
+        // Posición aleatoria en toda la pantalla
+        estrella.style.left = `${Math.random() * 100}%`;
+        estrella.style.top = `${Math.random() * 100}%`;
+
+        // Le asignamos la animación que creamos en CSS con duraciones diferentes
+        // para que no titilen todas al mismo tiempo
+        const duracionAnimacion = Math.random() * 3 + 2; // Entre 2s y 5s
+        const retrasoAnimacion = Math.random() * 5; // Retraso aleatorio
+        
+        estrella.style.animation = `titilar ${duracionAnimacion}s infinite ease-in-out`;
+        estrella.style.animationDelay = `${retrasoAnimacion}s`;
+
+        cielo.appendChild(estrella);
+    }
+}
+
+// Ejecutamos la función para crear el cielo
+crearEstrellas();
+        
     </script>
 </body>
 </html>
