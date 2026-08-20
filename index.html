@@ -412,7 +412,7 @@
                 musicaFondo.play().catch(error => console.log("Navegador bloqueó autoplay", error));
             }
         }
-        // Lógica de la Música
+                // Lógica de la Música
         const btnMusica = document.getElementById('btn-musica');
         const pathPlay = document.getElementById('path-play');
         const pathPausa = document.getElementById('path-pausa');
@@ -421,16 +421,17 @@
         btnMusica.addEventListener('click', () => {
             const musicaFondo = document.getElementById('musica-fondo');
             if (reproduciendo) {
-                // musicaFondo.pause(); 
+                musicaFondo.pause(); // ¡Acá le sacamos las barritas!
                 pathPausa.classList.add('hidden');
                 pathPlay.classList.remove('hidden');
             } else {
-                // musicaFondo.play(); 
+                musicaFondo.play(); // ¡Acá también le sacamos las barritas!
                 pathPlay.classList.add('hidden');
                 pathPausa.classList.remove('hidden');
             }
             reproduciendo = !reproduciendo;
         });
+
 
         // Lógica de la Cuenta Regresiva
         const fechaFiesta = new Date("December 12, 2026 21:00:00").getTime();
