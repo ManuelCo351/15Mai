@@ -162,25 +162,60 @@
                 <div class="h-[1px] flex-grow bg-gradient-to-l from-transparent to-white/60"></div>
             </div>
 
-            <!-- Cuenta Regresiva (Cajas transparentes finas) -->
-            <div class="grid grid-cols-4 gap-2 md:gap-4 w-full max-w-sm mx-auto">
-                <div class="bg-transparent border border-white/30 rounded-2xl py-3 flex flex-col items-center justify-center backdrop-blur-sm">
-                    <span id="dias" class="text-3xl text-white font-semibold drop-shadow-md">00</span>
-                    <span class="text-[9px] text-slate-300 tracking-widest uppercase mt-1">Días</span>
-                </div>
-                <div class="bg-transparent border border-white/30 rounded-2xl py-3 flex flex-col items-center justify-center backdrop-blur-sm">
-                    <span id="horas" class="text-3xl text-white font-semibold drop-shadow-md">00</span>
-                    <span class="text-[9px] text-slate-300 tracking-widest uppercase mt-1">Hs</span>
-                </div>
-                <div class="bg-transparent border border-white/30 rounded-2xl py-3 flex flex-col items-center justify-center backdrop-blur-sm">
-                    <span id="minutos" class="text-3xl text-white font-semibold drop-shadow-md">00</span>
-                    <span class="text-[9px] text-slate-300 tracking-widest uppercase mt-1">Min</span>
-                </div>
-                <div class="bg-transparent border border-white/30 rounded-2xl py-3 flex flex-col items-center justify-center backdrop-blur-sm">
-                    <span id="segundos" class="text-3xl text-white font-semibold drop-shadow-md">00</span>
-                    <span class="text-[9px] text-slate-300 tracking-widest uppercase mt-1">Seg</span>
+                        <!-- Cuenta Regresiva (Órbitas Estelares) -->
+            <div class="relative w-full max-w-sm mx-auto mt-4 mb-4">
+                
+                <!-- Línea de Constelación (Luz de fondo que conecta los círculos) -->
+                <div class="absolute top-1/2 left-4 right-4 h-[1px] bg-gradient-to-r from-transparent via-white/50 to-transparent -translate-y-1/2 z-0"></div>
+                
+                <div class="grid grid-cols-4 gap-3 relative z-10">
+                    
+                    <!-- DÍAS -->
+                    <div class="bg-black/10 backdrop-blur-sm border border-white/30 rounded-full aspect-square flex flex-col items-center justify-center shadow-[0_0_15px_rgba(255,255,255,0.05)] relative overflow-hidden group">
+                        <!-- Anillo giratorio (Órbita) -->
+                        <div class="absolute inset-1 border-[0.5px] border-white/40 border-dashed rounded-full opacity-60" style="animation: spin 15s linear infinite;"></div>
+                        <!-- Mini estrella superior -->
+                        <div class="absolute top-1.5 w-full flex justify-center opacity-70 animate-pulse">
+                            <svg viewBox="0 0 24 24" fill="currentColor" class="w-2 h-2 text-white"><path d="M12 0L13.5 10.5L24 12L13.5 13.5L12 24L10.5 13.5L0 12L10.5 10.5L12 0Z"/></svg>
+                        </div>
+                        <span id="dias" class="text-2xl md:text-3xl text-white font-light drop-shadow-[0_0_10px_rgba(255,255,255,0.9)] mt-1 tracking-wider">00</span>
+                        <span class="text-[7px] md:text-[8px] text-white/80 tracking-[0.2em] uppercase mt-0.5">Días</span>
+                    </div>
+
+                    <!-- HORAS -->
+                    <div class="bg-black/10 backdrop-blur-sm border border-white/30 rounded-full aspect-square flex flex-col items-center justify-center shadow-[0_0_15px_rgba(255,255,255,0.05)] relative overflow-hidden group">
+                        <div class="absolute inset-1 border-[0.5px] border-white/40 border-dashed rounded-full opacity-60" style="animation: spin 15s linear infinite reverse;"></div>
+                        <div class="absolute top-1.5 w-full flex justify-center opacity-70 animate-pulse" style="animation-delay: 0.3s;">
+                            <svg viewBox="0 0 24 24" fill="currentColor" class="w-2 h-2 text-white"><path d="M12 0L13.5 10.5L24 12L13.5 13.5L12 24L10.5 13.5L0 12L10.5 10.5L12 0Z"/></svg>
+                        </div>
+                        <span id="horas" class="text-2xl md:text-3xl text-white font-light drop-shadow-[0_0_10px_rgba(255,255,255,0.9)] mt-1 tracking-wider">00</span>
+                        <span class="text-[7px] md:text-[8px] text-white/80 tracking-[0.2em] uppercase mt-0.5">Hs</span>
+                    </div>
+
+                    <!-- MINUTOS -->
+                    <div class="bg-black/10 backdrop-blur-sm border border-white/30 rounded-full aspect-square flex flex-col items-center justify-center shadow-[0_0_15px_rgba(255,255,255,0.05)] relative overflow-hidden group">
+                        <div class="absolute inset-1 border-[0.5px] border-white/40 border-dashed rounded-full opacity-60" style="animation: spin 15s linear infinite;"></div>
+                        <div class="absolute top-1.5 w-full flex justify-center opacity-70 animate-pulse" style="animation-delay: 0.6s;">
+                            <svg viewBox="0 0 24 24" fill="currentColor" class="w-2 h-2 text-white"><path d="M12 0L13.5 10.5L24 12L13.5 13.5L12 24L10.5 13.5L0 12L10.5 10.5L12 0Z"/></svg>
+                        </div>
+                        <span id="minutos" class="text-2xl md:text-3xl text-white font-light drop-shadow-[0_0_10px_rgba(255,255,255,0.9)] mt-1 tracking-wider">00</span>
+                        <span class="text-[7px] md:text-[8px] text-white/80 tracking-[0.2em] uppercase mt-0.5">Min</span>
+                    </div>
+
+                    <!-- SEGUNDOS -->
+                    <div class="bg-black/10 backdrop-blur-sm border border-white/30 rounded-full aspect-square flex flex-col items-center justify-center shadow-[0_0_15px_rgba(255,255,255,0.05)] relative overflow-hidden group">
+                        <!-- El anillo de los segundos gira un poco más rápido para darle dinamismo -->
+                        <div class="absolute inset-1 border-[0.5px] border-white/40 border-dashed rounded-full opacity-60" style="animation: spin 8s linear infinite reverse;"></div>
+                        <div class="absolute top-1.5 w-full flex justify-center opacity-70 animate-pulse" style="animation-delay: 0.9s;">
+                            <svg viewBox="0 0 24 24" fill="currentColor" class="w-2 h-2 text-white"><path d="M12 0L13.5 10.5L24 12L13.5 13.5L12 24L10.5 13.5L0 12L10.5 10.5L12 0Z"/></svg>
+                        </div>
+                        <span id="segundos" class="text-2xl md:text-3xl text-white font-light drop-shadow-[0_0_10px_rgba(255,255,255,0.9)] mt-1 tracking-wider">00</span>
+                        <span class="text-[7px] md:text-[8px] text-white/80 tracking-[0.2em] uppercase mt-0.5">Seg</span>
+                    </div>
+                    
                 </div>
             </div>
+
         </section>
         
                         <!-- SECCIÓN 2: Carrusel Infancia (Estilo Transparente) -->
